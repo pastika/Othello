@@ -8,7 +8,7 @@
 template<const int N, const int M> class OthelloBoard
 {
 private:
-    unsigned char board[N][M];
+    unsigned char board_[N][M];
     std::set<std::pair<int, int>> moves_;
 
     inline bool onBoard(const int x, const int y)
@@ -23,14 +23,14 @@ public:
         {
             for(int j = 0; j < M; ++j)
             {
-                board[i][j] = 0;
+                board_[i][j] = 0;
             }
         }
 
-        board[N/2 - 1][M/2 -1] = 2;
-        board[N/2    ][M/2 -1] = 1;
-        board[N/2 - 1][M/2   ] = 1;
-        board[N/2    ][M/2   ] = 2;
+        board_[N/2 - 1][M/2 -1] = 2;
+        board_[N/2    ][M/2 -1] = 1;
+        board_[N/2 - 1][M/2   ] = 1;
+        board_[N/2    ][M/2   ] = 2;
     }
 
     unsigned char winner() const
@@ -43,7 +43,7 @@ public:
         {
             for(int j = 0; j < M; ++j)
             {
-                ++player[board[i][j]];
+                ++player[board_[i][j]];
             }
         }
         for(int i = 1; i < 256; ++i)
@@ -66,7 +66,7 @@ public:
             for(int j = 0; j < M; ++j)
             {
                 //Skip anf non-blank square
-                if(board[i][j]) continue;
+                if(board_[i][j]) continue;
 
                 //check blank squares for possible flips
                 const int dirSet[] = {-1, 0, 1};
@@ -79,13 +79,13 @@ public:
                             int dir = 1;
                             for(int xp = i + dirX, yp = j + dirY; onBoard(xp, yp) && (!dirX || i != xp) && (!dirY || j != yp); xp += dir*dirX, yp += dir*dirY)
                             {
-                                if(board[xp][yp] == 0) break;
+                                if(board_[xp][yp] == 0) break;
                                 if(dir == -1) 
                                 {
                                     moves_.insert(std::make_pair(i, j));
                                     break;
                                 }
-                                if(board[xp][yp] == player) dir = -1;
+                                if(board_[xp][yp] == player) dir = -1;
                             }
                         }
                     }
@@ -102,7 +102,7 @@ public:
         if(!onBoard(x, y)) return false;
 
         //Check if a play was made here 
-        if(board[x][y] != 0) return false;
+        if(board_[x][y] != 0) return false;
 
         //Check if this is a legal move
         if(!moves_.count(std::make_pair(x, y))) return false;
@@ -119,13 +119,13 @@ public:
                     int dir = 1;
                     for(int xp = x + dirX, yp = y + dirY; onBoard(xp, yp) && (!dirX || x != xp) && (!dirY || y != yp); xp += dir*dirX, yp += dir*dirY)
                     {
-                        if(board[xp][yp] == 0) break;
+                        if(board_[xp][yp] == 0) break;
                         if(dir == -1) 
                         {
-                            board[xp][yp] = player; 
+                            board_[xp][yp] = player; 
                             isLegal = true;
                         }
-                        if(board[xp][yp] == player) dir = -1;
+                        if(board_[xp][yp] == player) dir = -1;
                     }
                 }
             }
@@ -133,7 +133,7 @@ public:
     
         //Set play if move was legal
         //legal moves are on board, and must flip at least one opponent tile
-        if(isLegal) board[x][y] = player;
+        if(isLegal) board_[x][y] = player;
     
         return isLegal;
     }
@@ -159,7 +159,7 @@ public:
                 }
                 else
                 {
-                    pv = playerToChar(board[i][j]);
+                    pv = playerToChar(board_[i][j]);
                 }
                 printf("%c|", pv);
             }

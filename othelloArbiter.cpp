@@ -1,7 +1,7 @@
 #include "othelloArbiter.h"
 #include "othelloBoard.h"
 
-void OthelloArbiter::playOthello()
+unsigned char OthelloArbiter::playOthello()
 {
     //create board
     OthelloBoard<8, 8> board;
@@ -30,7 +30,7 @@ void OthelloArbiter::playOthello()
             do
             {
                 //printf("Player %c Choose move.\n", board.playerToChar(player));
-                players_[plalyer - 1](board.getState(), board.getValidPlays(), x, y);
+                (*players_[player - 1])(board.getState(), board.getValidPlays(), x, y);
                 //printf("Input: %d %d\n", x, y);
             }
             while(!board.play(player, x, y));

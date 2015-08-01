@@ -1,15 +1,8 @@
-#include "othelloBoard.h"
-
-#include <random>
-#include <functional>
+#include "othelloArbiter.h"
+#include "othelloPlayerRandom.h"
 
 void playerRandom(const unsigned char** state, const std::set<std::pair<int, int>>& moves, int& x, int& y, const int randnum)
 {
-    int nMoves = moves.size();
-    auto iter = moves.begin();
-    for(int i = 0; i < (randnum%nMoves); ++i) ++iter;
-    x = iter->first;
-    y = iter->second;
 }
 
 void playerLeftTop(const unsigned char** state, const std::set<std::pair<int, int>>& moves, int& x, int& y)
@@ -81,73 +74,20 @@ void playerHuman(const unsigned char** state, const std::set<std::pair<int, int>
 int main()
 {
     int wins[2] = {0, 0};
+
+    OthelloPlayer *p1 = new OthelloPlayerRandom();
+    OthelloPlayer *p2 = new OthelloPlayerRandom();
+
     for(int n = 0; n < 10000; ++n)
     {
-    //create board
-    OthelloBoard<8, 8> board;
+        OthelloArbiter oarb;
 
-    //initialize random number generator
-    std::mt19937 mtRand;
-    mtRand.seed(n);
-    std::uniform_int_distribution<int> randDist(0, 10000000);
-    auto rand = std::bind(randDist, mtRand);
+        oarb.addPlayer(p1);
+        oarb.addPlayer(p2);
 
-    //Basic game arbiter     
-    unsigned char player = 1;
-    int playerCanMove[2];
-    playerCanMove[0] = true;
-    playerCanMove[1] = true;
-    for(;playerCanMove[0] || playerCanMove[1];)
-    {
-        if(!board.avaliableMoves(player))
-        {
-            playerCanMove[player - 1] = false;
-            //printf("Player %c has no move.\n\n", board.playerToChar(player));
-        }
-        else
-        {
-            playerCanMove[player - 1] = true;
-            
-            //printf("\n");
-            //board.print();
-            //printf("\n");
-
-            int x, y;
-            do
-            {
-                //printf("Player %c Choose move.\n", board.playerToChar(player));
-                switch(player)
-                {
-                case 1:
-                    //Run player 1 AI
-                    playerRandom(board.getState(), board.getValidPlays(), x, y, rand());
-                    break;
-                case 2:
-                    //Run player 2 AI
-                    playerCornerEdgeRand(board.getState(), board.getValidPlays(), x, y, rand());
-                    break;
-                default:
-                    //printf("Player not defined!!!\n");
-                    break;
-                }
-                //printf("Input: %d %d\n", x, y);
-            }
-            while(!board.play(player, x, y));
-        }
-
-        if(player == 1) player = 2;
-        else player = 1;
-    }
-
-    unsigned char winner = board.winner();
-
-    //printf("\n");
-    //board.print();
-    //printf("\n");
-
-    printf("Player %c Wins!\n", board.playerToChar(winner));
-
-    wins[winner - 1]++;
+        unsigned char winner = oarb.playOthello();
+        
+        wins[winner - 1]++;
     }
 
     printf("\nWins:\nPlayer X: %d\nPlayer O: %d\n", wins[0], wins[1]); 
