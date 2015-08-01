@@ -1,5 +1,6 @@
 #include "othelloArbiter.h"
 #include "othelloPlayerRandom.h"
+#include "othelloPlayerHuman.h"
 
 void playerRandom(const unsigned char** state, const std::set<std::pair<int, int>>& moves, int& x, int& y, const int randnum)
 {
@@ -66,21 +67,18 @@ void playerCornerEdgeRand(const unsigned char** state, const std::set<std::pair<
     }
 }
 
-void playerHuman(const unsigned char** state, const std::set<std::pair<int, int>>& moves, int& x, int& y)
-{
-    scanf("%d %d", &x, &y);
-}
-
 int main()
 {
     int wins[2] = {0, 0};
 
     OthelloPlayer *p1 = new OthelloPlayerRandom();
-    OthelloPlayer *p2 = new OthelloPlayerRandom();
+    OthelloPlayer *p2 = new OthelloPlayerHuman();
 
     for(int n = 0; n < 10000; ++n)
     {
         OthelloArbiter oarb;
+
+        oarb.setVerbosity(1);
 
         oarb.addPlayer(p1);
         oarb.addPlayer(p2);

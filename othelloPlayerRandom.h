@@ -1,5 +1,4 @@
 #include <random>
-#include <functional>
 
 #include "othelloPlayer.h"
 
