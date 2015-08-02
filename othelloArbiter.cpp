@@ -7,11 +7,10 @@ unsigned char OthelloArbiter::playOthello()
     OthelloBoard<8, 8> board;
 
     //Basic game arbiter     
-    unsigned char player = 1;
     int playerCanMove[2];
     playerCanMove[0] = true;
     playerCanMove[1] = true;
-    for(;playerCanMove[0] || playerCanMove[1];)
+    for(unsigned char player = 1; playerCanMove[0] || playerCanMove[1]; player = ((player == 1)?2:1))
     {
         if(!board.avaliableMoves(player))
         {
@@ -34,13 +33,11 @@ unsigned char OthelloArbiter::playOthello()
             {
                 if(verbosity_ >= 1) printf("Player %c Choose move.\n", board.playerToChar(player));
                 (*players_[player - 1])(board.getState(), board.getValidPlays(), x, y);
-                if(verbosity_ >= 1) printf("Input: %d %d\n", x, y);
             }
             while(!board.play(player, x, y));
-        }
 
-        if(player == 1) player = 2;
-        else player = 1;
+            if(verbosity_ >= 1) printf("Input: %d %d\n", x, y);
+        }
     }
 
     unsigned char winner = board.winner();
