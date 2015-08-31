@@ -1,84 +1,24 @@
 #include "othelloArbiter.h"
 #include "othelloPlayerRandom.h"
 #include "othelloPlayerHuman.h"
+#include "othelloPlayerCES.h"
 
-void playerRandom(const unsigned char** state, const std::set<std::pair<int, int>>& moves, int& x, int& y, const int randnum)
-{
-}
-
-void playerLeftTop(const unsigned char** state, const std::set<std::pair<int, int>>& moves, int& x, int& y)
-{
-    x = moves.begin()->first;
-    y = moves.begin()->second;
-}
-
-void playerCornerEdgeRand(const unsigned char** state, const std::set<std::pair<int, int>>& moves, int& x, int& y, const int randnum)
-{
-    for(auto& move : moves)
-    {
-        if(move.first == 0 && move.second == 0) 
-        {
-            x = move.first;
-            y = move.second;
-        }
-        else if(move.first == 0 && move.second == 7) 
-        {
-            x = move.first;
-            y = move.second;
-        }
-        else if(move.first == 7 && move.second == 0) 
-        {
-            x = move.first;
-            y = move.second;
-        }
-        else if(move.first == 7 && move.second == 7) 
-        {
-            x = move.first;
-            y = move.second;
-        }
-        else if(move.first == 0) 
-        {
-            x = move.first;
-            y = move.second;
-        }
-        else if(move.first == 7) 
-        {
-            x = move.first;
-            y = move.second;
-        }
-        else if(move.second == 0) 
-        {
-            x = move.first;
-            y = move.second;
-        }
-        else if(move.second == 7) 
-        {
-            x = move.first;
-            y = move.second;
-        }
-        else
-        {
-            int nMoves = moves.size();
-            auto iter = moves.begin();
-            for(int i = 0; i < (randnum%nMoves); ++i) ++iter;
-            x = iter->first;
-            y = iter->second;
-        }
-    }
-}
+#include "getopt.h"
 
 int main()
 {
+    //Add option parsing here
+
     int wins[2] = {0, 0};
 
-    OthelloPlayer *p1 = new OthelloPlayerRandom();
-    OthelloPlayer *p2 = new OthelloPlayerHuman();
+    OthelloPlayer *p1 = new OthelloPlayerCES();
+    OthelloPlayer *p2 = new OthelloPlayerRandom();
 
     for(int n = 0; n < 10000; ++n)
     {
         OthelloArbiter oarb;
 
-        oarb.setVerbosity(1);
+        oarb.setVerbosity(0);
 
         oarb.addPlayer(p1);
         oarb.addPlayer(p2);

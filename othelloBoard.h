@@ -188,10 +188,9 @@ public:
         }
     }
 
-    inline const unsigned char** const getState()
+    inline const OthelloBoard<8, 8>& getState()
     {
-        const unsigned char** np = 0;
-        return static_cast<const unsigned char**>(np);//(board);
+        return *this;
     }
     
     inline const std::set<std::pair<int, int>>& getValidPlays() const
