@@ -8,7 +8,7 @@
 class OthelloPlayerHuman : public OthelloPlayer
 {
 private:
-    void returnPlay(const OthelloBoard<8, 8>&, const std::set<std::pair<int, int>>&, int& x, int& y)
+    void returnPlay(const OthelloBoard<8, 8>&, int& x, int& y)
     {
         char buff[32];
         if(fgets(buff, 32, stdin))

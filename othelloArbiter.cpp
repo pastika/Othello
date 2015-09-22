@@ -32,7 +32,7 @@ unsigned char OthelloArbiter::playOthello()
             do
             {
                 if(verbosity_ >= 1) printf("Player %c Choose move.\n", board.playerToChar(player));
-                (*players_[player - 1])(board.getState(), board.getValidPlays(), x, y);
+                (*players_[player - 1])(board.getState(), x, y);
             }
             while(!board.play(player, x, y));
 

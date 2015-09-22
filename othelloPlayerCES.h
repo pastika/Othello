@@ -6,7 +6,7 @@
 class OthelloPlayerCES : public OthelloPlayer
 {
 private:
-    void returnPlay(const OthelloBoard<8, 8>&, const std::set<std::pair<int, int>>&, int&, int&);
+    void returnPlay(const OthelloBoard<8, 8>&, int&, int&);
 
 public:
     OthelloPlayerCES();

@@ -5,8 +5,9 @@ OthelloPlayerRandom::OthelloPlayerRandom() : randDist_(0, 10000000), mtRand_()
     
 }
 
-void OthelloPlayerRandom::returnPlay(const OthelloBoard<8, 8>& board, const std::set<std::pair<int, int>>& moves, int& x, int& y)
+void OthelloPlayerRandom::returnPlay(const OthelloBoard<8, 8>& board, int& x, int& y)
 {
+    auto& moves = board.getValidPlays();
     const int nMoves = moves.size();
     const int randNum = randDist_(mtRand_);
 

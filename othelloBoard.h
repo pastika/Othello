@@ -10,6 +10,7 @@ template<const int N, const int M> class OthelloBoard
 private:
     unsigned char board_[N][M];
     std::set<std::pair<int, int>> moves_;
+    unsigned char lastPlayer_;
 
     inline const bool onBoard(const int x, const int y) const
     {
@@ -31,6 +32,8 @@ public:
         board_[N/2    ][M/2 -1] = 1;
         board_[N/2 - 1][M/2   ] = 1;
         board_[N/2    ][M/2   ] = 2;
+
+        lastPlayer_ = 0;
     }
 
     unsigned char winner() const
@@ -133,7 +136,11 @@ public:
     
         //Set play if move was legal
         //legal moves are on board, and must flip at least one opponent tile
-        if(isLegal) board_[x][y] = player;
+        if(isLegal) 
+        {
+            board_[x][y] = player;
+            lastPlayer_ = player;
+        }
     
         return isLegal;
     }
@@ -196,6 +203,11 @@ public:
     inline const std::set<std::pair<int, int>>& getValidPlays() const
     {
         return moves_;
+    }
+
+    inline const unsigned char getLastPlayer() const
+    {
+        return lastPlayer_;
     }
 };
 
