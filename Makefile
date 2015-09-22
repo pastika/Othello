@@ -4,7 +4,7 @@ SDIR       = .
 
 CXX        = g++
 
-CXXFLAGS  += -I. -std=c++0x
+CXXFLAGS  += -I. -std=c++11
 ## Optimization flag
 CXXFLAGS += -O3
 ## Enable the maximun warning
@@ -34,7 +34,7 @@ $(ODIR)/%.o : $(SDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) $(CXXDEPFLAGS) -o $@ -c $<
 
 othello: $(OBJS)
-	$(LD) $^ $(LIBS) $(MT2LIB) -o $@
+	$(LD) $^ $(LIBS) -o $@
 
 clean:
 	rm -f $(ODIR)/*.o $(ODIR)/*.d $(PROGRAMS) core 

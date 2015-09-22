@@ -11,7 +11,7 @@ private:
     unsigned char board_[N][M];
     std::set<std::pair<int, int>> moves_;
 
-    inline bool onBoard(const int x, const int y)
+    inline const bool onBoard(const int x, const int y) const
     {
         return x >= 0 && y >= 0 && x < N && y < M;
     }
@@ -188,7 +188,7 @@ public:
         }
     }
 
-    inline const OthelloBoard<8, 8>& getState()
+    inline const OthelloBoard<8, 8>& getState() const
     {
         return *this;
     }
