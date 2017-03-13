@@ -13,13 +13,15 @@ int main()
     int wins[2] = {0, 0};
 
     OthelloPlayer *p1 = new OthelloPlayerLOM();
-    OthelloPlayer *p2 = new OthelloPlayerRandom();
+    //OthelloPlayer *p2 = new OthelloPlayerRandom();
+    OthelloPlayer *p2 = new OthelloPlayerHuman();
 
-    for(int n = 0; n < 10000; ++n)
+    int games = 1;
+    for(int n = 0; n < games; ++n)
     {
         OthelloArbiter oarb;
 
-        oarb.setVerbosity(-1);
+        oarb.setVerbosity(1);
 
         oarb.addPlayer(p1);
         oarb.addPlayer(p2);

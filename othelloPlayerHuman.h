@@ -13,7 +13,7 @@ private:
         char buff[32];
         if(fgets(buff, 32, stdin))
         {
-            if(sscanf(buff, "%d %d", &y, &x) != 2)
+            if(sscanf(buff, "%d %d", &x, &y) != 2)
             {
                 printf("Please specify 2 and only 2 numbers for x and y position.\n");
             }
