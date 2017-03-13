@@ -1,9 +1,18 @@
 #include <cstdio>
+#include <cstring>
 #include <set>
 #include <utility>
 
 #ifndef OTHELLOBOARD_h
 #define OTHELLOBOARD_h
+
+#define ANSI_COLOR_RED     "\x1b[31m"
+#define ANSI_COLOR_GREEN   "\x1b[32m"
+#define ANSI_COLOR_YELLOW  "\x1b[33m"
+#define ANSI_COLOR_BLUE    "\x1b[34m"
+#define ANSI_COLOR_MAGENTA "\x1b[35m"
+#define ANSI_COLOR_CYAN    "\x1b[36m"
+#define ANSI_COLOR_RESET   "\x1b[0m"
 
 template<const int N, const int M> class OthelloBoard
 {
@@ -159,16 +168,16 @@ public:
             printf("%2d |", i);
             for(int j = 0; j < M; ++j)
             {
-                char pv = playerToChar(0);
+                unsigned char player = 0;
                 if(moves_.count(std::make_pair(i, j)))
                 {
-                    pv = playerToChar(255);
+                    player = 255;
                 }
                 else
                 {
-                    pv = playerToChar(board_[i][j]);
+                    player = board_[i][j];
                 }
-                printf("%c|", pv);
+                printf("%s%c%s|", playerToColor(player), playerToChar(player), ANSI_COLOR_RESET);
             }
             printf("\n");
         }
@@ -192,6 +201,23 @@ public:
             return '+';
         default:
             return '-';
+        }
+    }
+
+    inline const char* playerToColor(const unsigned char player) const
+    {
+        switch(player)
+        {
+        case 0:
+            return "";
+        case 1:
+            return ANSI_COLOR_RED;
+        case 2:
+            return ANSI_COLOR_BLUE;
+        case 255:
+            return ANSI_COLOR_GREEN;
+        default:
+            return "";
         }
     }
 
