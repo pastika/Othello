@@ -177,7 +177,7 @@ public:
                 {
                     player = board_[i][j];
                 }
-                printf("%s%c%s|", playerToColor(player), playerToChar(player), ANSI_COLOR_RESET);
+                printf("%s|", playerToCharAndColor(player));
             }
             printf("\n");
         }
@@ -204,20 +204,20 @@ public:
         }
     }
 
-    inline const char* playerToColor(const unsigned char player) const
+    inline const char* playerToCharAndColor(const unsigned char player) const
     {
         switch(player)
         {
         case 0:
-            return "";
+            return " ";
         case 1:
-            return ANSI_COLOR_RED;
+            return ANSI_COLOR_RED "X" ANSI_COLOR_RESET;
         case 2:
-            return ANSI_COLOR_BLUE;
+            return ANSI_COLOR_BLUE "O" ANSI_COLOR_RESET;
         case 255:
-            return ANSI_COLOR_GREEN;
+            return ANSI_COLOR_GREEN "+" ANSI_COLOR_RESET;
         default:
-            return "";
+            return "-";
         }
     }
 

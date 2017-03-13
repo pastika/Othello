@@ -15,7 +15,7 @@ unsigned char OthelloArbiter::playOthello()
         if(!board.avaliableMoves(player))
         {
             playerCanMove[player - 1] = false;
-            if(verbosity_ >= 1) printf("Player %c has no move.\n\n", board.playerToChar(player));
+            if(verbosity_ >= 1) printf("Player %s has no move.\n\n", board.playerToCharAndColor(player));
         }
         else
         {
@@ -31,7 +31,7 @@ unsigned char OthelloArbiter::playOthello()
             int x, y;
             do
             {
-                if(verbosity_ >= 1) printf("Player %c Choose move.\n", board.playerToChar(player));
+                if(verbosity_ >= 1) printf("Player %s Choose move.\n", board.playerToCharAndColor(player));
                 (*players_[player - 1])(board.getState(), x, y);
             }
             while(!board.play(player, x, y));
