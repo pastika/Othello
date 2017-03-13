@@ -42,3 +42,8 @@ void OthelloPlayerLOM::returnPlay(const OthelloBoard<8, 8>& board, int& x, int& 
     y = finalMove.begin()->second.front().second;
 }
 
+int OthelloPlayerLOM::sum(const int i, int sum, const OthelloBoard<8, 8>& board)
+{
+    auto& moves = board.getValidPlays();
+    OthelloBoard<8, 8> hBoard(board);
+}
