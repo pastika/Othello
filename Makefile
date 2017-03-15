@@ -36,6 +36,9 @@ $(ODIR)/%.o : $(SDIR)/%.cpp
 othello: $(OBJS)
 	$(LD) $^ $(LIBS) -o $@
 
+server:
+	g++ --std=c++11 othelloPlayerLOM.cpp othelloArbiter.cpp serverTest.cpp -o server
+
 clean:
 	rm -f $(ODIR)/*.o $(ODIR)/*.d $(PROGRAMS) core 
 
