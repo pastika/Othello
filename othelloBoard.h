@@ -2,6 +2,7 @@
 #include <cstring>
 #include <set>
 #include <utility>
+#include <string>
 
 #ifndef OTHELLOBOARD_h
 #define OTHELLOBOARD_h
@@ -43,6 +44,62 @@ public:
         board_[N/2    ][M/2   ] = 2;
 
         lastPlayer_ = 0;
+    }
+
+    const std::string packageBoard() const 
+    {
+        std::string boardPackage = std::to_string(N) + " " + std::to_string(M) + " ";
+        for(int i = 0; i < N; ++i)
+        {
+            for(int j = 0; j < M; ++j)
+            {
+                boardPackage += std::to_string(board_[i][j]);
+            }
+        }
+        //boardPackage += " ; " + std::to_string(moves_.size());
+        //for(const auto& move : moves_)
+        //{
+        //    boardPackage += " - " +  std::to_string(move.first) + " " + std::to_string(move.second);
+        //}
+        boardPackage += " ; " + std::to_string(lastPlayer_);
+        return boardPackage;
+    }
+
+    bool constructBoard(const std::string boardPackage)
+    {
+        size_t offset = 0;
+        int n = 0, m = 0, nMoves = 0;;
+        char buf[N*M + 1];
+        int lastPlayer;
+
+        if(!(sscanf(boardPackage.c_str(), "%i %i %s", &n, &m, buf) == 3 && n == N && m == M)) return false;
+
+        for(int i = 0; i < N; ++i)
+        {
+            for(int j = 0; j < M; ++j)
+            {
+                board_[i][j] = static_cast<unsigned char>(buf[i*M + j]) - 48;
+            }
+        }
+
+        //if((offset = boardPackage.find(";")) == std::string::npos) return false;
+        //if(!(sscanf(boardPackage.c_str() + offset + 1, "%i", &nMoves) == 1)) return false;
+        //for(int i = 0; i < nMoves; ++i)
+        //{
+        //    int x = -1;
+        //    int y = -1;
+        //    if((offset = boardPackage.find("-", offset + 1)) == std::string::npos) return false;
+        //    if(!(sscanf(boardPackage.c_str() + offset + 1, "%i %i", &x, &y) == 2 && x >= 0 && y >= 0)) return false;
+        //
+        //    
+        //}
+
+        if((offset = boardPackage.find(";", offset + 1)) == std::string::npos) return false;
+        if(!(sscanf(boardPackage.c_str() + offset + 1, "%i", &lastPlayer) == 1)) return false;
+
+        lastPlayer_ = static_cast<unsigned char>(lastPlayer);
+
+        return true;
     }
 
     unsigned char winner() const
