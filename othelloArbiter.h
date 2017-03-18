@@ -16,7 +16,7 @@ private:
     int sockd_;
 
 public:
-    void addPlayer(OthelloPlayer* const player) {players_.push_back(player);}
+    void addPlayer(OthelloPlayer* const player);
     unsigned char playOthello();
 
     void setVerbosity(int verbosity);

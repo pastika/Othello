@@ -261,7 +261,7 @@ public:
         }
     }
 
-    inline const char* playerToCharAndColor(const unsigned char player) const
+    inline static const char* playerToCharAndColor(const unsigned char player)
     {
         switch(player)
         {

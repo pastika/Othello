@@ -37,10 +37,10 @@ othello: $(OBJS)
 	$(LD) $^ $(LIBS) -o $@
 
 server:
-	g++ --std=c++11 othelloPlayerLOM.cpp othelloArbiter.cpp serverTest.cpp -o server
+	g++ -g --std=c++11 othelloPlayerLOM.cpp othelloArbiter.cpp serverTest.cpp -o server
 
 client:
-	g++ --std=c++11 clientTest.cpp -o client
+	g++ -g --std=c++11 clientTest.cpp -o client
 
 clean:
 	rm -f $(ODIR)/*.o $(ODIR)/*.d $(PROGRAMS) core 

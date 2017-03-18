@@ -1,4 +1,6 @@
 #include <cstdio>
+#include <string>
+#include <utility>
 #include <sys/socket.h>
 
 #include "othelloPlayer.h"
@@ -13,7 +15,7 @@ private:
 
     void returnPlay(const OthelloBoard<8, 8>& board, int& x, int& y)
     {
-        auto theStr = board.packageBoard();
+        auto theStr = "play ; " + std::to_string(player_) + " ; "  + board.packageBoard();
         
         int msgLen = theStr.size();
         int byteSent = 0;
@@ -49,6 +51,19 @@ public:
     OthelloPlayerRemoteHuman(int sockd)
     {
         sockd_ = sockd;
+    }
+
+    void winner(const unsigned char winner, const OthelloBoard<8, 8>& board)
+    {
+        char buf[32];
+        sprintf(buf, "winner: %hhu ; %hhu ; ", winner, player_);
+
+        auto boardPack = std::string(buf) + board.packageBoard();
+
+        if( send(sockd_, boardPack.c_str(), boardPack.size(), 0) == -1)
+        {
+            perror("send");
+        }
     }
 };
 
