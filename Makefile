@@ -6,7 +6,7 @@ CXX        = g++
 
 CXXFLAGS  += -I. -std=c++11
 ## Optimization flag
-CXXFLAGS += -O3
+CXXFLAGS += -g #-O3
 ## Enable the maximun warning
 #CXXFLAGS += -Wall -Wextra -Weffc++ -g
 
@@ -38,6 +38,9 @@ othello: $(OBJS)
 
 server:
 	g++ --std=c++11 othelloPlayerLOM.cpp othelloArbiter.cpp serverTest.cpp -o server
+
+client:
+	g++ --std=c++11 clientTest.cpp -o client
 
 clean:
 	rm -f $(ODIR)/*.o $(ODIR)/*.d $(PROGRAMS) core 

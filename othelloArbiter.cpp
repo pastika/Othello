@@ -26,6 +26,7 @@ unsigned char OthelloArbiter::playOthello()
                 printf("\n");
                 board.print();
                 printf("\n");
+
             }
 
             int x, y;
@@ -59,7 +60,8 @@ void OthelloArbiter::setVerbosity(int verbosity)
     verbosity_ = verbosity;
 }
 
-OthelloArbiter::OthelloArbiter()
+OthelloArbiter::OthelloArbiter(int sockd)
 {
     verbosity_ = 0;
+    sockd_ = sockd;
 }

@@ -175,7 +175,7 @@ int main(void)
             int games = 1;
             for(int n = 0; n < games; ++n)
             {
-                OthelloArbiter oarb;
+                OthelloArbiter oarb(new_fd);
 
                 oarb.setVerbosity(1);
 
