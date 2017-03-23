@@ -5,10 +5,10 @@
 
 #include "othelloPlayer.h"
 
-#ifndef OTHELLOPLAYERREMOTEHUMAN_h
-#define OTHELLOPLAYERREMOTEHUMAN_h
+#ifndef OTHELLOPLAYERREMOTE_h
+#define OTHELLOPLAYERREMOTE_h
 
-class OthelloPlayerRemoteHuman : public OthelloPlayer
+class OthelloPlayerRemote : public OthelloPlayer
 {
 private:
     int sockd_;
@@ -48,7 +48,7 @@ private:
     }
 
 public:
-    OthelloPlayerRemoteHuman(int sockd)
+    OthelloPlayerRemote(int sockd)
     {
         sockd_ = sockd;
     }

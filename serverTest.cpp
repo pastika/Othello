@@ -18,7 +18,7 @@
 #include "othelloArbiter.h"
 #include "othelloPlayerRandom.h"
 #include "othelloPlayerHuman.h"
-#include "othelloPlayerRemoteHuman.h"
+#include "othelloPlayerRemote.h"
 #include "othelloPlayerCES.h"
 #include "othelloPlayerLOM.h"
 
@@ -170,7 +170,7 @@ int main(void)
 
             OthelloPlayer *p1 = new OthelloPlayerLOM();
             //OthelloPlayer *p2 = new OthelloPlayerRandom();
-            OthelloPlayer *p2 = new OthelloPlayerRemoteHuman(new_fd);
+            OthelloPlayer *p2 = new OthelloPlayerRemote(new_fd);
 
             int games = 1;
             for(int n = 0; n < games; ++n)
