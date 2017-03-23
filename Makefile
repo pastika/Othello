@@ -27,13 +27,13 @@ objdir:
 $(ODIR)/%.o : $(SDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) $(CXXDEPFLAGS) -o $@ -c $<
 
-othello: $(ODIR)/othelloArbiter.o $(ODIR)/othelloPlayerLOM.o $(ODIR)/serverTest.o $(ODIR)/othelloPlayerRandom.o
+othello: $(ODIR)/othelloArbiter.o $(ODIR)/othelloPlayerLOM.o $(ODIR)/othelloPlayerRandom.o $(ODIR)/othello.o
 	$(LD) $^ $(LIBS) -o $@
 
-server: $(ODIR)/othelloPlayerLOM.o $(ODIR)/othelloArbiter.o $(ODIR)/serverTest.o
+server: $(ODIR)/othelloPlayerLOM.o $(ODIR)/othelloArbiter.o $(ODIR)/othelloServer.o
 	$(LD) $^ $(LIBS) -o $@
 
-client: $(ODIR)/othelloArbiterClient.o $(ODIR)/othelloPlayerRandom.o $(ODIR)/clientTest.o
+client: $(ODIR)/othelloArbiterClient.o $(ODIR)/othelloPlayerRandom.o $(ODIR)/othelloClient.o
 	$(LD) $^ $(LIBS) -o $@
 
 clean:
