@@ -11,6 +11,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <ctime>
 
 #include <arpa/inet.h>
 
@@ -106,7 +107,7 @@ int main(int argc, char *argv[])
     OthelloArbiterClient oac(sockfd);
 
     oac.setVerbosity(1);
-    oac.setPlayer(new OthelloPlayerRandom());
+    oac.setPlayer(new OthelloPlayerRandom(clock()));
 
     oac.beginArbitration();
 
