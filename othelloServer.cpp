@@ -145,15 +145,10 @@ int main(void)
         { // this is the child process
             close(sockfd); // child doesn't need the listener
 
-                printf("HELLO 1\n");
             OthelloMenu menu(new_fd);
-                printf("HELLO 2\n");
             menu.setVerbosity(verbosity);
-                printf("HELLO 3\n");
             int state = menu.startMenu();
-                printf("HELLO 4\n");
             
-            printf("HELLO: %i\n", state);
             if(state == OthelloMenu::OS_PLAY)
             {
                 int wins[2] = {0, 0};

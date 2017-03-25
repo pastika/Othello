@@ -152,9 +152,7 @@ private:
             switch(responce)
             {
             case 1:
-                printf("WHAT\n");
                 (p1_?p2_:p1_) = new OthelloPlayerRandom();
-                printf("THE\n");
                 break;
             case 2:
                 (p1_?p2_:p1_) = new OthelloPlayerCES();
@@ -196,7 +194,6 @@ public:
     {
         int menu = 1;
         while(stateMachineSwitch(menu)) {printf("HI: %i\n", menu); }
-        printf("BONJOUR\n");
         return menu;
     }
 
