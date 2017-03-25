@@ -3,6 +3,9 @@
 #include <set>
 #include <utility>
 #include <string>
+#include <iostream>
+#include <sstream>
+#include <iomanip>
 
 #ifndef OTHELLOBOARD_h
 #define OTHELLOBOARD_h
@@ -213,16 +216,23 @@ public:
 
     void print() const
     {
-        printf("   ");
-        for(int j = 0; j < M; ++j) printf("%2d", j);
-        printf("\n");
-        printf("   ");
-        for(int j = 0; j < 2*M + 1; ++j) printf("-");
-        printf("\n");
+        std::stringstream ssdstr;
+        constructDisplayString(ssdstr);
+        printf("%s", ssdstr.str().c_str());
+    }
+
+    void constructDisplayString(std::stringstream& ssdstr) const
+    {
+        ssdstr << "   ";
+        for(int j = 0; j < M; ++j) ssdstr << std::setw(2) << j;
+        ssdstr << "\n";
+        ssdstr << "   ";
+        for(int j = 0; j < 2*M + 1; ++j) ssdstr << "-";
+        ssdstr << "\n";
 
         for(int i = 0; i < N; ++i)
         {
-            printf("%2d |", i);
+            ssdstr << std::setw(2) << i << " |";
             for(int j = 0; j < M; ++j)
             {
                 unsigned char player = 0;
@@ -234,14 +244,14 @@ public:
                 {
                     player = board_[i][j];
                 }
-                printf("%s|", playerToCharAndColor(player));
+                ssdstr << playerToCharAndColor(player) << "|";
             }
-            printf("\n");
+            ssdstr << "\n";
         }
 
-        printf("   ");
-        for(int j = 0; j < 2*M + 1; ++j) printf("-");
-        printf("\n");
+        ssdstr << "   ";
+        for(int j = 0; j < 2*M + 1; ++j) ssdstr << "-";
+        ssdstr << "\n";
     }
 
     inline char playerToChar(const unsigned char player) const

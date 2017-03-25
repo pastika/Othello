@@ -1,6 +1,8 @@
 #include <cstdio>
 #include <string>
 #include <utility>
+#include <sstream>
+
 #include <sys/socket.h>
 
 #include "othelloPlayer.h"
@@ -15,13 +17,15 @@ private:
 
     void returnPlay(const OthelloBoard<8, 8>& board, int& x, int& y)
     {
-        auto theStr = "play ; " + std::to_string(player_) + " ; "  + board.packageBoard();
-        
-        int msgLen = theStr.size();
+        std::stringstream dstr;
+        board.constructDisplayString(dstr);
+        dstr << "\nSelect play for player " << board.playerToCharAndColor(player_) << "\n";
+
+        int msgLen = dstr.str().size();
         int byteSent = 0;
         while(msgLen - byteSent)
         {
-            if( (byteSent += send(sockd_, theStr.c_str() + byteSent, msgLen, 0)) == -1)
+            if( (byteSent += send(sockd_, dstr.str().c_str() + byteSent, msgLen, 0)) == -1)
             {
                 perror("send");
             }
@@ -55,14 +59,18 @@ public:
 
     void winner(const unsigned char winner, const OthelloBoard<8, 8>& board)
     {
-        char buf[32];
-        sprintf(buf, "winner: %hhu ; %hhu ; ", winner, player_);
+        std::stringstream dstr;
+        dstr << "Winner: " << board.playerToCharAndColor(player_) << "\n\n";
+        board.constructDisplayString(dstr);
 
-        auto boardPack = std::string(buf) + board.packageBoard();
-
-        if( send(sockd_, boardPack.c_str(), boardPack.size(), 0) == -1)
+        int msgLen = dstr.str().size();
+        int byteSent = 0;
+        while(msgLen - byteSent)
         {
-            perror("send");
+            if( (byteSent += send(sockd_, dstr.str().c_str() + byteSent, msgLen, 0)) == -1)
+            {
+                perror("send");
+            }
         }
     }
 };
