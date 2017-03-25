@@ -131,18 +131,15 @@ private:
             responce = arbitrateExchange(menu, selectPlayerSlot());
             if(gameType_ == 1)
             {
-                if(responce == 1)
-                {
-                    p1_ = new OthelloPlayerTelnet(sockd_);
-                }
-                else if(responce == 2)
-                {
-                    p2_ = new OthelloPlayerTelnet(sockd_);
-                }
-                else
-                {
-                    menu = OS_SETPLAYERSLOT;
-                }
+                if(responce == 1)        p1_ = new OthelloPlayerTelnet(sockd_);
+                else if(responce == 2)   p2_ = new OthelloPlayerTelnet(sockd_);
+                else                     menu = OS_SETPLAYERSLOT;
+            }
+            else if(gameType_ == 2)
+            {
+                if(responce == 1)        p1_ = new OthelloPlayerRemote(sockd_);
+                else if(responce == 2)   p2_ = new OthelloPlayerRemote(sockd_);
+                else                     menu = OS_SETPLAYERSLOT;
             }
             return true;
         case OS_SETOPPONENT:
