@@ -32,7 +32,11 @@ unsigned char OthelloArbiter::playOthello()
             do
             {
                 if(verbosity_ >= 1) printf("Player %s Choose move.\n", board.playerToCharAndColor(player));
-                (*players_[player - 1])(board.getState(), x, y);
+                do
+                {
+                    (*players_[player - 1])(board.getState(), x, y);
+                }
+                while(board.getValidPlays().count(std::make_pair(x, y)) == 0);
             }
             while(!board.play(player, x, y));
 
@@ -41,6 +45,8 @@ unsigned char OthelloArbiter::playOthello()
     }
 
     unsigned char winner = board.winner();
+
+    for(OthelloPlayer* player : players_) player->winner(winner, board);
 
     if(verbosity_ >= 1) 
     {
@@ -54,12 +60,19 @@ unsigned char OthelloArbiter::playOthello()
     return winner;
 }
 
+void OthelloArbiter::addPlayer(OthelloPlayer* const player)
+{
+    players_.push_back(player);
+    player->setPlayer(static_cast<unsigned char>(players_.size()));
+}
+
 void OthelloArbiter::setVerbosity(int verbosity)
 {
     verbosity_ = verbosity;
 }
 
-OthelloArbiter::OthelloArbiter()
+OthelloArbiter::OthelloArbiter(int sockd)
 {
     verbosity_ = 0;
+    sockd_ = sockd;
 }

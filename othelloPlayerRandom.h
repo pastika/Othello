@@ -14,7 +14,7 @@ private:
     void returnPlay(const OthelloBoard<8, 8>&, int&, int&);
 
 public:
-    OthelloPlayerRandom();
+    OthelloPlayerRandom(int seed = 12321);
 };
 
 #endif

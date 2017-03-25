@@ -1,6 +1,6 @@
 #include "othelloPlayerRandom.h"
 
-OthelloPlayerRandom::OthelloPlayerRandom() : randDist_(0, 10000000), mtRand_()
+OthelloPlayerRandom::OthelloPlayerRandom(int seed) : randDist_(0, 10000000), mtRand_(seed)
 {
     
 }
