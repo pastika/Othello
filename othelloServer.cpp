@@ -30,6 +30,8 @@
 
 #define BACKLOG 10     // how many pending connections queue will hold
 
+int verbosity = 2;
+
 void sigchld_handler(int s)
 {
     // waitpid() might overwrite errno, so we save and restore it:
@@ -122,7 +124,7 @@ int main(void)
         exit(1);
     }
 
-    printf("server: waiting for connections...\n");
+    if (verbosity >= 1) printf("server: waiting for connections...\n");
 
     while(1) 
     {  // main accept() loop
@@ -137,39 +139,48 @@ int main(void)
         inet_ntop(their_addr.ss_family,
                   get_in_addr((struct sockaddr *)&their_addr),
                   s, sizeof s);
-        printf("server: got connection from %s\n", s);
+        if (verbosity >= 1) printf("server: got connection from %s\n", s);
 
         if (!fork()) 
         { // this is the child process
             close(sockfd); // child doesn't need the listener
 
+                printf("HELLO 1\n");
             OthelloMenu menu(new_fd);
-            menu.setVerbosity(2);
-            menu.startMenu();
+                printf("HELLO 2\n");
+            menu.setVerbosity(verbosity);
+                printf("HELLO 3\n");
+            int state = menu.startMenu();
+                printf("HELLO 4\n");
             
-            int wins[2] = {0, 0};
-
-            OthelloPlayer *p1 = new OthelloPlayerLOM();
-            //OthelloPlayer *p2 = new OthelloPlayerRandom();
-            OthelloPlayer *p2 = new OthelloPlayerRemote(new_fd);
-
-            int games = 1;
-            for(int n = 0; n < games; ++n)
+            printf("HELLO: %i\n", state);
+            if(state == OthelloMenu::OS_PLAY)
             {
-                OthelloArbiter oarb(new_fd);
+                int wins[2] = {0, 0};
 
-                oarb.setVerbosity(1);
+                OthelloPlayer *p1 = menu.getPlayer1();
+                OthelloPlayer *p2 = menu.getPlayer2();
 
-                oarb.addPlayer(p1);
-                oarb.addPlayer(p2);
+                if(p1 && p2)
+                {
+                    int games = 1;
+                    for(int n = 0; n < games; ++n)
+                    {
+                        OthelloArbiter oarb(new_fd);
 
-                unsigned char winner = oarb.playOthello();
+                        oarb.setVerbosity(1);
+
+                        oarb.addPlayer(p1);
+                        oarb.addPlayer(p2);
+
+                        unsigned char winner = oarb.playOthello();
         
-                wins[winner - 1]++;
+                        wins[winner - 1]++;
+                    }
+
+                    if (verbosity >= 1) printf("\nWins:\nPlayer X: %d\nPlayer O: %d\n", wins[0], wins[1]); 
+                }
             }
-
-            printf("\nWins:\nPlayer X: %d\nPlayer O: %d\n", wins[0], wins[1]); 
-
 
             close(new_fd);
             exit(0);

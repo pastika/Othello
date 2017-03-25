@@ -8,24 +8,27 @@
 #include "othelloPlayerRandom.h"
 #include "othelloPlayerCES.h"
 #include "othelloPlayerLOM.h"
+#include "othelloPlayerTelnet.h"
 
 #ifndef OTHELLOMENU_H
 #define OTHELLOMENU_H
 
 class OthelloMenu
 {
+public:
+    enum OTHELLOSTATE
+    {
+        OS_EXIT, OS_STARTMENU, OS_SETPLAYERSLOT, OS_SETOPPONENT, OS_PLAY
+    };
+
 private:
     int sockd_;
     int verbosity_;
 
     int gameType_;
-    
 
-    enum OTHELLOSTATE
-    {
-        OS_EXIT, OS_STARTMENU, OS_SETPLAYERSLOT, OS_SETOPPONENT, OS_PLAY
-    };
-    
+    OthelloPlayer *p1_, *p2_;
+
     int sendMessage(const std::string mstr)
     {
         int msgLen = mstr.size();
@@ -70,7 +73,7 @@ private:
 
     std::pair<std::string, std::vector<int>> openingServerMenu()
     {
-        return {"Select game mode:\n\n"
+        return {"\nSelect game mode:\n\n"
                 " 1) Telnet Game \n\n"
                 " 2) One Remote Player\n\n"
                 " 3) Two Remote Players\n\n",
@@ -79,7 +82,7 @@ private:
 
     std::pair<std::string, std::vector<int>> selectPlayerSlot()
     {
-        return {"Select Your Player Slot:\n\n"
+        return {"\nSelect Your Player Slot:\n\n"
                 " 1) Player 1 \n\n"
                 " 2) Player 2 \n\n",
             {OS_SETOPPONENT} };
@@ -87,7 +90,7 @@ private:
 
     std::pair<std::string, std::vector<int>> selectOpponentPlayer()
     {
-        return {"Select Opponent :\n\n"
+        return {"\nSelect Opponent :\n\n"
                 " 1) Random \n\n"
                 " 2) CES \n\n"
                 " 3) LOM \n\n",
@@ -99,7 +102,6 @@ private:
         sendMessage(textAndSwitch.first);
 
         int tmpMenu = recieveResponce();
-        printf("tmpMenu: %i\n", tmpMenu);
         if(tmpMenu < 0)        menu = OS_EXIT;
         else if(tmpMenu == 0)  menu = OS_STARTMENU;
         else
@@ -108,13 +110,13 @@ private:
             if(menu >= textAndSwitch.second.size()) menu = textAndSwitch.second.size();
             menu = textAndSwitch.second[menu - 1];
         }
-        printf("menu: %i\n", menu);
         return tmpMenu;
     }
 
     bool stateMachineSwitch(int& menu)
     {
         int responce = 0;
+        printf("State: %i\n", menu);
         switch(menu)
         {
         case OS_EXIT:
@@ -127,15 +129,50 @@ private:
         case OS_SETPLAYERSLOT:
             if(verbosity_ >= 2) printf("Select Player\n");
             responce = arbitrateExchange(menu, selectPlayerSlot());
+            if(gameType_ == 1)
+            {
+                if(responce == 1)
+                {
+                    p1_ = new OthelloPlayerTelnet(sockd_);
+                }
+                else if(responce == 2)
+                {
+                    p2_ = new OthelloPlayerTelnet(sockd_);
+                }
+                else
+                {
+                    menu = OS_SETPLAYERSLOT;
+                }
+            }
             return true;
         case OS_SETOPPONENT:
             if(verbosity_ >= 2) printf("Select Opponent\n");
             responce = arbitrateExchange(menu, selectOpponentPlayer());
+            printf("Select Opponent 2\n");
+            switch(responce)
+            {
+            case 1:
+                printf("WHAT\n");
+                (p1_?p2_:p1_) = new OthelloPlayerRandom();
+                printf("THE\n");
+                break;
+            case 2:
+                (p1_?p2_:p1_) = new OthelloPlayerCES();
+                break;
+            case 3:
+                (p1_?p2_:p1_) = new OthelloPlayerLOM();
+                break;
+            default:
+                menu = OS_SETOPPONENT;
+                break;
+            }
+            printf("Select Opponent menu: %i\n", menu);
             return true;
         case OS_PLAY:
             return false;
         default:
-            break;
+            menu = OS_EXIT;
+            return false;
         }
     }
 
@@ -146,6 +183,8 @@ public:
         sockd_ = sockd;
         gameType_ = 0;
         verbosity_ = -1;
+
+        p1_ = p2_ = nullptr;
     }
 
     void setVerbosity(const int verbosity)
@@ -156,12 +195,20 @@ public:
     int startMenu()
     {
         int menu = 1;
-        while(stateMachineSwitch(menu))
-        {
-        }
-
+        while(stateMachineSwitch(menu)) {printf("HI: %i\n", menu); }
+        printf("BONJOUR\n");
         return menu;
     }
+
+    OthelloPlayer* getPlayer1()
+    {
+        return p1_;
+    }
+
+    OthelloPlayer* getPlayer2()
+    {
+        return p2_;
+    }    
 
 };
 

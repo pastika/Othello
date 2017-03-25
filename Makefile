@@ -30,7 +30,7 @@ $(ODIR)/%.o : $(SDIR)/%.cpp
 othello: $(ODIR)/othelloArbiter.o $(ODIR)/othelloPlayerLOM.o $(ODIR)/othelloPlayerRandom.o $(ODIR)/othello.o
 	$(LD) $^ $(LIBS) -o $@
 
-server: $(ODIR)/othelloPlayerLOM.o $(ODIR)/othelloArbiter.o $(ODIR)/othelloServer.o
+server: $(ODIR)/othelloPlayerLOM.o $(ODIR)/othelloPlayerRandom.o $(ODIR)/othelloPlayerCES.o $(ODIR)/othelloArbiter.o $(ODIR)/othelloServer.o
 	$(LD) $^ $(LIBS) -o $@
 
 client: $(ODIR)/othelloArbiterClient.o $(ODIR)/othelloPlayerRandom.o $(ODIR)/othelloClient.o
