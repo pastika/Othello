@@ -21,6 +21,7 @@
 #include "othelloPlayerRemote.h"
 #include "othelloPlayerCES.h"
 #include "othelloPlayerLOM.h"
+#include "othelloMenu.h"
 
 #include "getopt.h"
 
@@ -141,31 +142,11 @@ int main(void)
         if (!fork()) 
         { // this is the child process
             close(sockfd); // child doesn't need the listener
-            while(true)
-            {
-                if (send(new_fd, "Hello, world!\n", 14, 0) == -1)
-                {
-                    perror("send");
-                }
-                const int BUFLEN = 128;
-                char buff[BUFLEN];
-                int len = 0;
-                if( (len = recv(new_fd, buff, BUFLEN - 1, 0)) == -1)
-                {
-                    perror("recv");
-                }
-                int i = 0;
-                for(; i < len; ++i) if(buff[i] == '\r') break;
-                buff[i] = '\0';
-                printf("%i %s\n", len, buff);
-                if((len = strcmp("quit", buff)) == 0) 
-                {
-                    break;
-                }
-            }
 
-            //Add option parsing here
-
+            OthelloMenu menu(new_fd);
+            menu.setVerbosity(2);
+            menu.startMenu();
+            
             int wins[2] = {0, 0};
 
             OthelloPlayer *p1 = new OthelloPlayerLOM();
