@@ -1,10 +1,13 @@
+# Set the build OS
+dist: trusty
+
+# Enable C++ support
+language: cpp
+
 # Enable build tests on all branches
 branches:
   only:
     - /.*/
-
-# Enable C++ support
-language: cpp
 
 # Compiler selection
 compiler:
