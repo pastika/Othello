@@ -1,3 +1,8 @@
+# Enable build tests on all branches
+branches:
+  only:
+    - /.*/
+
 # Enable C++ support
 language: cpp
 
