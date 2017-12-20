@@ -72,6 +72,8 @@ echo "" > .nojekyll
 echo 'Generating Doxygen code documentation...'
 # Redirect both stderr and stdout to the log file AND the console.
 doxygen $DOXYFILE 2>&1 | tee doxygen.log
+#create dummy index.html to redirect to the main index.html
+echo "<html><head><meta http-equiv=\"refresh\" content=\"0; url=http://pastika.github.io/Othello/html/index.html\" /></head></html>" > index.html
 
 ################################################################################
 ##### Upload the documentation to the gh-pages branch of the repository.   #####
