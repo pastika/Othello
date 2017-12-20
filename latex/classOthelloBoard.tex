@@ -1,0 +1,213 @@
+\hypertarget{classOthelloBoard}{\section{Othello\-Board$<$ N, M $>$ Class Template Reference}
+\label{classOthelloBoard}\index{Othello\-Board$<$ N, M $>$@{Othello\-Board$<$ N, M $>$}}
+}
+
+
+{\ttfamily \#include $<$othello\-Board.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classOthelloBoard_a3f996705018ff9d27657bc0b724e857f}{Othello\-Board} ()
+\item 
+const std\-::string \hyperlink{classOthelloBoard_a91b476e5d89605400e93eab7f2f3ca2d}{package\-Board} () const 
+\item 
+bool \hyperlink{classOthelloBoard_ae2ac8bc8fd191a029207fcd5ad096d92}{construct\-Board} (const std\-::string board\-Package)
+\item 
+unsigned char \hyperlink{classOthelloBoard_a2303029a0e36c94dcc12903592287e3a}{winner} () const 
+\item 
+int \hyperlink{classOthelloBoard_a876a2168b743b1a36d58f8191bd2bda0}{avaliable\-Moves} (const unsigned char player)
+\item 
+bool \hyperlink{classOthelloBoard_a9d50536c87a0e73882d845815bf72b65}{play} (const unsigned char player, const int x, const int y)
+\item 
+void \hyperlink{classOthelloBoard_aeb67c1d90f64fee5c1c63fbfe4330a11}{print} () const 
+\item 
+void \hyperlink{classOthelloBoard_a76077193286df75737e0ce23e83bb70c}{construct\-Display\-String} (std\-::stringstream \&ssdstr) const 
+\item 
+char \hyperlink{classOthelloBoard_ac33b6f65bc0e95efb82519ea36b07c1e}{player\-To\-Char} (const unsigned char player) const 
+\item 
+const \hyperlink{classOthelloBoard}{Othello\-Board}$<$ 8, 8 $>$ \& \hyperlink{classOthelloBoard_abb88de115c183847aa91a93176404783}{get\-State} () const 
+\item 
+const std\-::set$<$ std\-::pair$<$ int, \\*
+int $>$ $>$ \& \hyperlink{classOthelloBoard_a24c36f4b8d92934aacd63ddfff8a8941}{get\-Valid\-Plays} () const 
+\item 
+const unsigned char \hyperlink{classOthelloBoard_a3b1d8204a1f096cd818431621453f54d}{get\-Last\-Player} () const 
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static const char $\ast$ \hyperlink{classOthelloBoard_af2812a9e104285af5147e05306ce528f}{player\-To\-Char\-And\-Color} (const unsigned char player)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$const int N, const int M$>$class Othello\-Board$<$ N, M $>$}
+
+\hyperlink{classOthelloBoard}{Othello\-Board} holds an othello board of arbitrary size N by M along with the basic play mechanics of the game. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classOthelloBoard_a3f996705018ff9d27657bc0b724e857f}{\index{Othello\-Board@{Othello\-Board}!Othello\-Board@{Othello\-Board}}
+\index{Othello\-Board@{Othello\-Board}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{Othello\-Board}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ {\bf Othello\-Board}$<$ N, M $>$\-::{\bf Othello\-Board} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_a3f996705018ff9d27657bc0b724e857f}
+Constructs an empty othello board ready for play. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classOthelloBoard_a876a2168b743b1a36d58f8191bd2bda0}{\index{Othello\-Board@{Othello\-Board}!avaliable\-Moves@{avaliable\-Moves}}
+\index{avaliable\-Moves@{avaliable\-Moves}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{avaliable\-Moves}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ int {\bf Othello\-Board}$<$ N, M $>$\-::avaliable\-Moves (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_a876a2168b743b1a36d58f8191bd2bda0}
+Calculates the list of legal moves for the player specified 
+\begin{DoxyParams}{Parameters}
+{\em player} & Player to calculate the legal moves for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of legal moves for player 
+\end{DoxyReturn}
+\hypertarget{classOthelloBoard_ae2ac8bc8fd191a029207fcd5ad096d92}{\index{Othello\-Board@{Othello\-Board}!construct\-Board@{construct\-Board}}
+\index{construct\-Board@{construct\-Board}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{construct\-Board}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ bool {\bf Othello\-Board}$<$ N, M $>$\-::construct\-Board (
+\begin{DoxyParamCaption}
+\item[{const std\-::string}]{board\-Package}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_ae2ac8bc8fd191a029207fcd5ad096d92}
+Reconstructs an othello board state from a packaged board string 
+\begin{DoxyParams}{Parameters}
+{\em board\-Package} & string produced by package\-Board to decode \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+returns true if the string is successfully parsed, otherwise false 
+\end{DoxyReturn}
+\hypertarget{classOthelloBoard_a76077193286df75737e0ce23e83bb70c}{\index{Othello\-Board@{Othello\-Board}!construct\-Display\-String@{construct\-Display\-String}}
+\index{construct\-Display\-String@{construct\-Display\-String}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{construct\-Display\-String}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ void {\bf Othello\-Board}$<$ N, M $>$\-::construct\-Display\-String (
+\begin{DoxyParamCaption}
+\item[{std\-::stringstream \&}]{ssdstr}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_a76077193286df75737e0ce23e83bb70c}
+Helper function to construct the current stringstream for the current board state 
+\begin{DoxyParams}{Parameters}
+{\em ssdstr} & Stringstream object to fill with the current board state \\
+\hline
+\end{DoxyParams}
+\hypertarget{classOthelloBoard_a3b1d8204a1f096cd818431621453f54d}{\index{Othello\-Board@{Othello\-Board}!get\-Last\-Player@{get\-Last\-Player}}
+\index{get\-Last\-Player@{get\-Last\-Player}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{get\-Last\-Player}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ const unsigned char {\bf Othello\-Board}$<$ N, M $>$\-::get\-Last\-Player (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_a3b1d8204a1f096cd818431621453f54d}
+The last player to go before the current player \begin{DoxyReturn}{Returns}
+The last player to go before the current player 
+\end{DoxyReturn}
+\hypertarget{classOthelloBoard_abb88de115c183847aa91a93176404783}{\index{Othello\-Board@{Othello\-Board}!get\-State@{get\-State}}
+\index{get\-State@{get\-State}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{get\-State}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ const {\bf Othello\-Board}$<$8, 8$>$\& {\bf Othello\-Board}$<$ N, M $>$\-::get\-State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_abb88de115c183847aa91a93176404783}
+Returns the current state of the \hyperlink{classOthelloBoard}{Othello\-Board} object \begin{DoxyReturn}{Returns}
+The current state of the \hyperlink{classOthelloBoard}{Othello\-Board} object 
+\end{DoxyReturn}
+\hypertarget{classOthelloBoard_a24c36f4b8d92934aacd63ddfff8a8941}{\index{Othello\-Board@{Othello\-Board}!get\-Valid\-Plays@{get\-Valid\-Plays}}
+\index{get\-Valid\-Plays@{get\-Valid\-Plays}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{get\-Valid\-Plays}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ const std\-::set$<$std\-::pair$<$int, int$>$ $>$\& {\bf Othello\-Board}$<$ N, M $>$\-::get\-Valid\-Plays (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_a24c36f4b8d92934aacd63ddfff8a8941}
+Getter to return the list of valid plays for the current player \begin{DoxyReturn}{Returns}
+The set of valid plays for the current player 
+\end{DoxyReturn}
+\hypertarget{classOthelloBoard_a91b476e5d89605400e93eab7f2f3ca2d}{\index{Othello\-Board@{Othello\-Board}!package\-Board@{package\-Board}}
+\index{package\-Board@{package\-Board}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{package\-Board}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ const std\-::string {\bf Othello\-Board}$<$ N, M $>$\-::package\-Board (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_a91b476e5d89605400e93eab7f2f3ca2d}
+Translates the internal board array into a single non-\/human readable string which is intended for transmission via network to another client. \begin{DoxyReturn}{Returns}
+Packaged string containing all the information in the internal board array 
+\end{DoxyReturn}
+\hypertarget{classOthelloBoard_a9d50536c87a0e73882d845815bf72b65}{\index{Othello\-Board@{Othello\-Board}!play@{play}}
+\index{play@{play}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{play}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ bool {\bf Othello\-Board}$<$ N, M $>$\-::play (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{player, }
+\item[{const int}]{x, }
+\item[{const int}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_a9d50536c87a0e73882d845815bf72b65}
+Place a piece on the board for the specified player. 
+\begin{DoxyParams}{Parameters}
+{\em player} & the player who is placing the piece \\
+\hline
+{\em x} & the x position to place the piece \\
+\hline
+{\em y} & the y position to place the piece \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If the move was a legal move returns true, otherwise the piece is not placed and the function returns false 
+\end{DoxyReturn}
+\hypertarget{classOthelloBoard_ac33b6f65bc0e95efb82519ea36b07c1e}{\index{Othello\-Board@{Othello\-Board}!player\-To\-Char@{player\-To\-Char}}
+\index{player\-To\-Char@{player\-To\-Char}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{player\-To\-Char}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ char {\bf Othello\-Board}$<$ N, M $>$\-::player\-To\-Char (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{player}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_ac33b6f65bc0e95efb82519ea36b07c1e}
+Helper function to convert the current player number into the approperiate display symbol on the screen. 
+\begin{DoxyParams}{Parameters}
+{\em player} & The player to return the symbol for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The symbol corropsonding to player 
+\end{DoxyReturn}
+\hypertarget{classOthelloBoard_af2812a9e104285af5147e05306ce528f}{\index{Othello\-Board@{Othello\-Board}!player\-To\-Char\-And\-Color@{player\-To\-Char\-And\-Color}}
+\index{player\-To\-Char\-And\-Color@{player\-To\-Char\-And\-Color}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{player\-To\-Char\-And\-Color}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ static const char$\ast$ {\bf Othello\-Board}$<$ N, M $>$\-::player\-To\-Char\-And\-Color (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{classOthelloBoard_af2812a9e104285af5147e05306ce528f}
+Helper function to convert the current player number into the approperiate display symbol on the screen with color. 
+\begin{DoxyParams}{Parameters}
+{\em player} & The player to return the symbol for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The symbol corropsonding to player 
+\end{DoxyReturn}
+\hypertarget{classOthelloBoard_aeb67c1d90f64fee5c1c63fbfe4330a11}{\index{Othello\-Board@{Othello\-Board}!print@{print}}
+\index{print@{print}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ void {\bf Othello\-Board}$<$ N, M $>$\-::print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_aeb67c1d90f64fee5c1c63fbfe4330a11}
+Print the current board state to the screen. \hypertarget{classOthelloBoard_a2303029a0e36c94dcc12903592287e3a}{\index{Othello\-Board@{Othello\-Board}!winner@{winner}}
+\index{winner@{winner}!OthelloBoard@{Othello\-Board}}
+\subsubsection[{winner}]{\setlength{\rightskip}{0pt plus 5cm}template$<$const int N, const int M$>$ unsigned char {\bf Othello\-Board}$<$ N, M $>$\-::winner (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloBoard_a2303029a0e36c94dcc12903592287e3a}
+Determine which player currently is willing the game. I.\-e. who has the most pieces of the board. \begin{DoxyReturn}{Returns}
+returns the player who currently has the most pieces of the baord 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/pastika/\-Othello/othello\-Board.\-h\end{DoxyCompactItemize}
