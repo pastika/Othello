@@ -36,7 +36,7 @@ __AUTHOR__="Jeroen de Bruijn"
 #Abort if this is not the master branch
 if [ "$TRAVIS_BRANCH" != "master" ]
 then 
-    exit(0)
+    exit 0
 fi
 
 ################################################################################
