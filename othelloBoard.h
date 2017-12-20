@@ -18,6 +18,9 @@
 #define ANSI_COLOR_CYAN    "\x1b[36m"
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
+/**
+ *OthelloBoard holds an othello board of arbitrary size N by M along with the basic play mechanics of the game.
+ */
 template<const int N, const int M> class OthelloBoard
 {
 private:
@@ -31,6 +34,9 @@ private:
     }
     
 public:
+    /**
+     *Constructs an empty othello board ready for play.
+     */
     OthelloBoard()
     {
         for(int i = 0; i < N; ++i)
@@ -49,6 +55,10 @@ public:
         lastPlayer_ = 0;
     }
 
+    /**
+     *Translates the internal board array into a single non-human readable string which is intended for transmission via network to another client.
+     *@return Packaged string containing all the information in the internal board array
+     */
     const std::string packageBoard() const 
     {
         std::string boardPackage = std::to_string(N) + " " + std::to_string(M) + " ";
@@ -68,6 +78,11 @@ public:
         return boardPackage;
     }
 
+    /**
+     *Reconstructs an othello board state from a packaged board string
+     *@param boardPackage string produced by packageBoard to decode
+     *@return returns true if the string is successfully parsed, otherwise false
+     */
     bool constructBoard(const std::string boardPackage)
     {
         size_t offset = 0;
@@ -105,6 +120,10 @@ public:
         return true;
     }
 
+    /**
+     *Determine which player currently is willing the game.   I.e. who has the most pieces of the board.
+     *@return returns the player who currently has the most pieces of the baord 
+     */
     unsigned char winner() const
     {
         int player[256];
@@ -130,6 +149,11 @@ public:
         return winner;
     }
 
+    /**
+     *Calculates the list of legal moves for the player specified
+     *@param player Player to calculate the legal moves for
+     *@return The number of legal moves for player 
+     */
     int avaliableMoves(const unsigned char player)
     {
         moves_.clear();
@@ -168,6 +192,13 @@ public:
         return moves_.size();
     }
 
+    /**
+     *Place a piece on the board for the specified player.
+     *@param player the player who is placing the piece 
+     *@param x the x position to place the piece 
+     *@param y the y position to place the piece
+     *@return If the move was a legal move returns true, otherwise the piece is not placed and the function returns false
+     */
     bool play(const unsigned char player, const int x, const int y)
     {
         //Check if play is on board
@@ -214,6 +245,9 @@ public:
         return isLegal;
     }
 
+    /**
+     *Print the current board state to the screen.
+     */
     void print() const
     {
         std::stringstream ssdstr;
@@ -221,6 +255,10 @@ public:
         printf("%s", ssdstr.str().c_str());
     }
 
+    /**
+     *Helper function to construct the current stringstream for the current board state
+     *@param ssdstr Stringstream object to fill with the current board state
+     */
     void constructDisplayString(std::stringstream& ssdstr) const
     {
         ssdstr << "   ";
@@ -254,6 +292,11 @@ public:
         ssdstr << "\n";
     }
 
+    /**
+     *Helper function to convert the current player number into the approperiate display symbol on the screen.
+     *@param player The player to return the symbol for
+     *@return The symbol corropsonding to player 
+     */
     inline char playerToChar(const unsigned char player) const
     {
         switch(player)
@@ -271,6 +314,11 @@ public:
         }
     }
 
+    /**
+     *Helper function to convert the current player number into the approperiate display symbol on the screen with color.
+     *@param player The player to return the symbol for
+     *@return The symbol corropsonding to player 
+     */
     inline static const char* playerToCharAndColor(const unsigned char player)
     {
         switch(player)
@@ -288,16 +336,28 @@ public:
         }
     }
 
+    /**
+     *Returns the current state of the OthelloBoard object
+     *@return The current state of the OthelloBoard object
+     */
     inline const OthelloBoard<8, 8>& getState() const
     {
         return *this;
     }
     
+    /**
+     *Getter to return the list of valid plays for the current player
+     *@return The set of valid plays for the current player
+     */
     inline const std::set<std::pair<int, int>>& getValidPlays() const
     {
         return moves_;
     }
 
+    /**
+     *The last player to go before the current player
+     *@return The last player to go before the current player
+     */
     inline const unsigned char getLastPlayer() const
     {
         return lastPlayer_;
