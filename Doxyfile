@@ -1,5 +1,5 @@
 ROJECT_NAME     = test
-OUTPUT_DIRECTORY = docs
+OUTPUT_DIRECTORY = 
 WARNINGS         = YES
-INPUT            = CfgParser/include CfgParser/src TopTagger/include TopTagger/src TopTagger/test Tools/python
+INPUT            = $(TRAVIS_BUILD_DIR)
 FILE_PATTERNS    = *.cc *.cpp *.C *.c *.h *.hpp *.hh *.py
