@@ -1,5 +1,5 @@
-ROJECT_NAME     = test
+PROJECT_NAME     = Othello
 OUTPUT_DIRECTORY = 
-WARNINGS         = YES
+WARNINGS         = NO
 INPUT            = $(TRAVIS_BUILD_DIR)
 FILE_PATTERNS    = *.cc *.cpp *.C *.c *.h *.hpp *.hh *.py
