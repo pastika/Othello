@@ -33,6 +33,12 @@ __AUTHOR__="Jeroen de Bruijn"
 # 
 ################################################################################
 
+#Abort if this is not the master branch
+if [ "$TRAVIS_BRANCH" != "master" ]
+then 
+    exit(0)
+fi
+
 ################################################################################
 ##### Setup this script and get the current gh-pages branch.               #####
 echo 'Setting up the script...'
