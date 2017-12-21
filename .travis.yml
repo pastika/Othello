@@ -8,7 +8,7 @@ language: cpp
 env:
   global:
     - GH_REPO_NAME: Othello
-    - DOXYFILE: $TRAVIS_BUILD_DIR/
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
     - GH_REPO_REF: github.com/pastika/Othello.git
     - secure: "NaC04+uMsQ3SpLwyQcCVvCMFvExgGrVTDc4CplYYq4cTrE77L4cQ3MlbGaasjGcAfo9Umglgd6UHjJuSgcNgu5dUYp22HOzb7vxOFG1XpJIOz3p/01d8+K9wv0sz5MvxlekI8G6F/42FCGvQwJRhu/C5ydtjIf6GBwg24PvHxgEKhzDZtXBaOoMAXdjss9SLuYVvUijc2dTfzsnkiZ233FwlRbEKeUjHok3Ugc/w87WwTdsOHIXdJJAtC8qaGkppd6Q+GciDz7RKWsS9AFlPzpxo3ypWS9BgGQ6k3rNITIaFg25HDfZLaseu2PJQeAOYCOSjGdRNvgT0NYIFAot32GWJkJ19hn6D0fbIFXsTl/vCrEUuC2JQbmIA9pCWn9jvPvrtgvYAFwcm1TDH5Dj9bftwUv9C2yYvIdez8z9GKQIvHeAnYrx2oTylf2vaK2so8Ayc9yEiLA+Oh+74ZO6a2Z6ZH/cIOWIZP2dmXmbRtBElLemz4/8fmVq2oacgLu2o0EF7nCqwdsOq9ljTG9VnU417CcQ4oz8Y5ETVxocDWcAgNUEev4cyZcIi2ep9TTFD8ZDP1qhRi+f9lx8J2LBycnx34Wt7JuZAZ86ZwbzbL0Gul68/MeM71dLtrsQTJ3pNHr4jCiyXj3Im2cSltxKwN4v00hGmGC/0F6c7VLsdyrk="
 
@@ -37,13 +37,6 @@ script:
 
 # Generate and deploy documentation
 after_success:
-#  - |
-#    if [ "$TRAVIS_BRANCH" == "master" ]
-#    then 
-#      cd $TRAVIS_BUILD_DIR
-#      chmod +x generateDocumentationAndDeploy.sh
-#      ./generateDocumentationAndDeploy.sh
-#    fi
   - cd $TRAVIS_BUILD_DIR
   - chmod +x generateDocumentationAndDeploy.sh
   - ./generateDocumentationAndDeploy.sh
