@@ -35,6 +35,7 @@ __AUTHOR__="Jeroen de Bruijn"
 
 #Abort if this is not the master branch
 echo $TRAVIS_BRANCH
+printenv
 if [ "$TRAVIS_BRANCH" != "master" ]
 then 
     exit 0
