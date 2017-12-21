@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['winner',['winner',['../classOthelloBoard.html#a2303029a0e36c94dcc12903592287e3a',1,'OthelloBoard']]]
+  ['setplayer',['setPlayer',['../classOthelloPlayer.html#a856fb93347be5480c9db179bb912c694',1,'OthelloPlayer']]]
 ];

@@ -13,10 +13,31 @@ Inheritance diagram for Othello\-Player\-Remote\-:\begin{figure}[H]
 \hypertarget{classOthelloPlayerRemote_ae06abf8567284ffdefe13da89fe99138}{{\bfseries Othello\-Player\-Remote} (int sockd)}\label{classOthelloPlayerRemote_ae06abf8567284ffdefe13da89fe99138}
 
 \item 
-\hypertarget{classOthelloPlayerRemote_a6d7f6c0544aa6a6eb219e69d6c6d2e41}{void {\bfseries winner} (const unsigned char winner, const \hyperlink{classOthelloBoard}{Othello\-Board}$<$ 8, 8 $>$ \&board)}\label{classOthelloPlayerRemote_a6d7f6c0544aa6a6eb219e69d6c6d2e41}
-
+void \hyperlink{classOthelloPlayerRemote_a6d7f6c0544aa6a6eb219e69d6c6d2e41}{winner} (const unsigned char winner, const \hyperlink{classOthelloBoard}{Othello\-Board}$<$ 8, 8 $>$ \&board)
 \end{DoxyCompactItemize}
 \subsection*{Additional Inherited Members}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classOthelloPlayerRemote_a6d7f6c0544aa6a6eb219e69d6c6d2e41}{\index{Othello\-Player\-Remote@{Othello\-Player\-Remote}!winner@{winner}}
+\index{winner@{winner}!OthelloPlayerRemote@{Othello\-Player\-Remote}}
+\subsubsection[{winner}]{\setlength{\rightskip}{0pt plus 5cm}void Othello\-Player\-Remote\-::winner (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{winner, }
+\item[{const {\bf Othello\-Board}$<$ 8, 8 $>$ \&}]{board}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classOthelloPlayerRemote_a6d7f6c0544aa6a6eb219e69d6c6d2e41}
+This function is used to inform the \hyperlink{classOthelloPlayer}{Othello\-Player} which of the players won the game and provide the final board state. It is optional to redefine this method. The player may choose to ignore this information, in which case the default definition is sufficient. 
+\begin{DoxyParams}{Parameters}
+{\em winner} & The player position of the winning player \\
+\hline
+{\em The} & board state at the end of the game \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \hyperlink{classOthelloPlayer_a278b0f93b676c302f914a3dac85d5adf}{Othello\-Player}.
+
 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}

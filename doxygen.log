@@ -4,7 +4,6 @@
 /home/travis/build/pastika/Othello/othelloPlayerHuman.h:9: warning: Compound OthelloPlayerHuman is not documented.
 /home/travis/build/pastika/Othello/othelloPlayerTelnet.h:14: warning: Compound OthelloPlayerTelnet is not documented.
 /home/travis/build/pastika/Othello/othelloPlayerCES.h:7: warning: Compound OthelloPlayerCES is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:10: warning: Compound OthelloPlayer is not documented.
 /home/travis/build/pastika/Othello/othelloPlayerRemote.h:12: warning: Compound OthelloPlayerRemote is not documented.
 /home/travis/build/pastika/Othello/othelloPlayerLOM.h:7: warning: Compound OthelloPlayerLOM is not documented.
 /home/travis/build/pastika/Othello/othelloArbiterClient.h:10: warning: Compound OthelloArbiterClient is not documented.
@@ -103,37 +102,21 @@ Bui/home/travis/build/pastika/Othello/othelloArbiter.h:19: warning: Member addPl
 /home/travis/build/pastika/Othello/othelloMenu.h:190: warning: Member startMenu() (function) of class OthelloMenu is not documented.
 /home/travis/build/pastika/Othello/othelloMenu.h:197: warning: Member getPlayer1() (function) of class OthelloMenu is not documented.
 /home/travis/build/pastika/Othello/othelloMenu.h:202: warning: Member getPlayer2() (function) of class OthelloMenu is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:18: warning: Member operator()(const OthelloBoard< 8, 8 > &board, int &x, int &y) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:23: warning: Member setPlayer(const unsigned char player) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:28: warning: Member winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:15: warning: Member player_ (variable) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:18: warning: Member operator()(const OthelloBoard< 8, 8 > &board, int &x, int &y) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:23: warning: Member setPlayer(const unsigned char player) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:28: warning: Member winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:15: warning: Member player_ (variable) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:18: warning: Member operator()(const OthelloBoard< 8, 8 > &board, int &x, int &y) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:23: warning: Member setPlayer(const unsigned char player) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:28: warning: Member winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:15: warning: Member player_ (variable) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:18: warning: Member operator()(const OthelloBoard< 8, 8 > &board, int &x, int &y) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:23: warning: Member setPlayer(const unsigned char player) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:28: warning: Member winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:15: warning: Member player_ (variable) of class OthelloPlayer is not documented.
+/home/travis/build/pastika/Othello/othelloPlayer.h:38: warning: argument 'The' of command @param is not found in the argument list of OthelloPlayer::setPlayer(const unsigned char player)
+/home/travis/build/pastika/Othello/othelloPlayer.h:38: warning: The following parameters of OthelloPlayer::setPlayer(const unsigned char player) are not documented:
+  parameter 'player'
+/home/travis/build/pastika/Othello/othelloPlayer.h:47: warning: argument 'The' of command @param is not found in the argument list of OthelloPlayer::winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board)
+/home/travis/build/pastika/Othello/othelloPlayer.h:47: warning: The following parameters of OthelloPlayer::winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) are not documented:
+  parameter 'board'
 /home/travis/build/pastika/Othello/othelloPlayerRandom.h:17: warning: Member OthelloPlayerRandom(int seed=12321) (function) of class OthelloPlayerRandom is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:18: warning: Member operator()(const OthelloBoard< 8, 8 > &board, int &x, int &y) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:23: warning: Member setPlayer(const unsigned char player) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:28: warning: Member winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:15: warning: Member player_ (variable) of class OthelloPlayer is not documented.
 /home/travis/build/pastika/Othello/othelloPlayerRemote.h:51: warning: Member OthelloPlayerRemote(int sockd) (function) of class OthelloPlayerRemote is not documented.
-/home/travis/build/pastika/Othello/othelloPlayerRemote.h:56: warning: Member winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) (function) of class OthelloPlayerRemote is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:18: warning: Member operator()(const OthelloBoard< 8, 8 > &board, int &x, int &y) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:23: warning: Member setPlayer(const unsigned char player) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:15: warning: Member player_ (variable) of class OthelloPlayer is not documented.
+/home/travis/build/pastika/Othello/othelloPlayerRemote.h:56: warning: argument 'The' of command @param is not found in the argument list of OthelloPlayerRemote::winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) inherited from member winner at line 47 in file /home/travis/build/pastika/Othello/othelloPlayer.h
+/home/travis/build/pastika/Othello/othelloPlayerRemote.h:56: warning: The following parameters of OthelloPlayerRemote::winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) are not documented:
+  parameter 'board'
 /home/travis/build/pastika/Othello/othelloPlayerTelnet.h:55: warning: Member OthelloPlayerTelnet(int sockd) (function) of class OthelloPlayerTelnet is not documented.
-/home/travis/build/pastika/Othello/othelloPlayerTelnet.h:60: warning: Member winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) (function) of class OthelloPlayerTelnet is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:18: warning: Member operator()(const OthelloBoard< 8, 8 > &board, int &x, int &y) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:23: warning: Member setPlayer(const unsigned char player) (function) of class OthelloPlayer is not documented.
-/home/travis/build/pastika/Othello/othelloPlayer.h:15: warning: Member player_ (variable) of class OthelloPlayer is not documented.
+/home/travis/build/pastika/Othello/othelloPlayerTelnet.h:60: warning: argument 'The' of command @param is not found in the argument list of OthelloPlayerTelnet::winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) inherited from member winner at line 47 in file /home/travis/build/pastika/Othello/othelloPlayer.h
+/home/travis/build/pastika/Othello/othelloPlayerTelnet.h:60: warning: The following parameters of OthelloPlayerTelnet::winner(const unsigned char winner, const OthelloBoard< 8, 8 > &board) are not documented:
+  parameter 'board'
 lding full member lists recursively...
 Adding members to member groups.
 Computing member references...
@@ -196,5 +179,5 @@ Generating file index...
 Generating file member index...
 Generating example index...
 finalizing index lists...
-lookup cache used 121/65536 hits=676 misses=126
+lookup cache used 123/65536 hits=670 misses=128
 finished...

@@ -69,6 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
+      <li><a href="functions_vars.html"><span>Variables</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -77,7 +78,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -106,6 +107,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getValidPlays()
 : <a class="el" href="classOthelloBoard.html#a24c36f4b8d92934aacd63ddfff8a8941">OthelloBoard&lt; N, M &gt;</a>
 </li>
+<li>operator()()
+: <a class="el" href="classOthelloPlayer.html#a9aa0f48e9cb6c1e7c9037850423f2915">OthelloPlayer</a>
+</li>
 <li>OthelloBoard()
 : <a class="el" href="classOthelloBoard.html#a3f996705018ff9d27657bc0b724e857f">OthelloBoard&lt; N, M &gt;</a>
 </li>
@@ -114,6 +118,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>play()
 : <a class="el" href="classOthelloBoard.html#a9d50536c87a0e73882d845815bf72b65">OthelloBoard&lt; N, M &gt;</a>
+</li>
+<li>player_
+: <a class="el" href="classOthelloPlayer.html#a19f59ab327765eac668851590e7d51f3">OthelloPlayer</a>
 </li>
 <li>playerToChar()
 : <a class="el" href="classOthelloBoard.html#ac33b6f65bc0e95efb82519ea36b07c1e">OthelloBoard&lt; N, M &gt;</a>
@@ -124,14 +131,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>print()
 : <a class="el" href="classOthelloBoard.html#aeb67c1d90f64fee5c1c63fbfe4330a11">OthelloBoard&lt; N, M &gt;</a>
 </li>
+<li>setPlayer()
+: <a class="el" href="classOthelloPlayer.html#a856fb93347be5480c9db179bb912c694">OthelloPlayer</a>
+</li>
 <li>winner()
 : <a class="el" href="classOthelloBoard.html#a2303029a0e36c94dcc12903592287e3a">OthelloBoard&lt; N, M &gt;</a>
+, <a class="el" href="classOthelloPlayer.html#a278b0f93b676c302f914a3dac85d5adf">OthelloPlayer</a>
+, <a class="el" href="classOthelloPlayerRemote.html#a6d7f6c0544aa6a6eb219e69d6c6d2e41">OthelloPlayerRemote</a>
+, <a class="el" href="classOthelloPlayerTelnet.html#a2903532fbbc2de163b4bf3c14e214dfe">OthelloPlayerTelnet</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 21 2017 00:39:45 for Othello by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 21 2017 00:57:03 for Othello by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

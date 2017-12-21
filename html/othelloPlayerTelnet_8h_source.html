@@ -68,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        std::stringstream dstr;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        board.<a class="code" href="classOthelloBoard.html#a76077193286df75737e0ce23e83bb70c">constructDisplayString</a>(dstr);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        dstr &lt;&lt; <span class="stringliteral">&quot;\nSelect play for player &quot;</span> &lt;&lt; board.<a class="code" href="classOthelloBoard.html#af2812a9e104285af5147e05306ce528f">playerToCharAndColor</a>(player_) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        dstr &lt;&lt; <span class="stringliteral">&quot;\nSelect play for player &quot;</span> &lt;&lt; board.<a class="code" href="classOthelloBoard.html#af2812a9e104285af5147e05306ce528f">playerToCharAndColor</a>(<a class="code" href="classOthelloPlayer.html#a19f59ab327765eac668851590e7d51f3">player_</a>) &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordtype">int</span> msgLen = dstr.str().size();</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordtype">int</span> byteSent = 0;</div>
@@ -141,10 +141,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        sockd_ = sockd;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span> winner(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> winner, <span class="keyword">const</span> <a class="code" href="classOthelloBoard.html">OthelloBoard&lt;8, 8&gt;</a>&amp; board)</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classOthelloPlayerTelnet.html#a2903532fbbc2de163b4bf3c14e214dfe">   60</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classOthelloPlayerTelnet.html#a2903532fbbc2de163b4bf3c14e214dfe">winner</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code" href="classOthelloPlayerTelnet.html#a2903532fbbc2de163b4bf3c14e214dfe">winner</a>, <span class="keyword">const</span> <a class="code" href="classOthelloBoard.html">OthelloBoard&lt;8, 8&gt;</a>&amp; board)</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        std::stringstream dstr;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        dstr &lt;&lt; <span class="stringliteral">&quot;Winner: &quot;</span> &lt;&lt; board.<a class="code" href="classOthelloBoard.html#af2812a9e104285af5147e05306ce528f">playerToCharAndColor</a>(player_) &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        dstr &lt;&lt; <span class="stringliteral">&quot;Winner: &quot;</span> &lt;&lt; board.<a class="code" href="classOthelloBoard.html#af2812a9e104285af5147e05306ce528f">playerToCharAndColor</a>(<a class="code" href="classOthelloPlayer.html#a19f59ab327765eac668851590e7d51f3">player_</a>) &lt;&lt; <span class="stringliteral">&quot;\n\n&quot;</span>;</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        board.<a class="code" href="classOthelloBoard.html#a76077193286df75737e0ce23e83bb70c">constructDisplayString</a>(dstr);</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">int</span> msgLen = dstr.str().size();</div>
@@ -161,14 +161,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classOthelloBoard_html_a76077193286df75737e0ce23e83bb70c"><div class="ttname"><a href="classOthelloBoard.html#a76077193286df75737e0ce23e83bb70c">OthelloBoard::constructDisplayString</a></div><div class="ttdeci">void constructDisplayString(std::stringstream &amp;ssdstr) const </div><div class="ttdef"><b>Definition:</b> othelloBoard.h:262</div></div>
-<div class="ttc" id="classOthelloPlayer_html"><div class="ttname"><a href="classOthelloPlayer.html">OthelloPlayer</a></div><div class="ttdef"><b>Definition:</b> othelloPlayer.h:9</div></div>
+<div class="ttc" id="classOthelloPlayer_html_a19f59ab327765eac668851590e7d51f3"><div class="ttname"><a href="classOthelloPlayer.html#a19f59ab327765eac668851590e7d51f3">OthelloPlayer::player_</a></div><div class="ttdeci">unsigned char player_</div><div class="ttdoc">Internal variable to track which player this in the game. </div><div class="ttdef"><b>Definition:</b> othelloPlayer.h:26</div></div>
+<div class="ttc" id="classOthelloPlayerTelnet_html_a2903532fbbc2de163b4bf3c14e214dfe"><div class="ttname"><a href="classOthelloPlayerTelnet.html#a2903532fbbc2de163b4bf3c14e214dfe">OthelloPlayerTelnet::winner</a></div><div class="ttdeci">void winner(const unsigned char winner, const OthelloBoard&lt; 8, 8 &gt; &amp;board)</div><div class="ttdef"><b>Definition:</b> othelloPlayerTelnet.h:60</div></div>
+<div class="ttc" id="classOthelloPlayer_html"><div class="ttname"><a href="classOthelloPlayer.html">OthelloPlayer</a></div><div class="ttdef"><b>Definition:</b> othelloPlayer.h:12</div></div>
 <div class="ttc" id="classOthelloBoard_html"><div class="ttname"><a href="classOthelloBoard.html">OthelloBoard</a></div><div class="ttdef"><b>Definition:</b> othelloBoard.h:24</div></div>
 <div class="ttc" id="classOthelloPlayerTelnet_html"><div class="ttname"><a href="classOthelloPlayerTelnet.html">OthelloPlayerTelnet</a></div><div class="ttdef"><b>Definition:</b> othelloPlayerTelnet.h:13</div></div>
 <div class="ttc" id="classOthelloBoard_html_af2812a9e104285af5147e05306ce528f"><div class="ttname"><a href="classOthelloBoard.html#af2812a9e104285af5147e05306ce528f">OthelloBoard::playerToCharAndColor</a></div><div class="ttdeci">static const char * playerToCharAndColor(const unsigned char player)</div><div class="ttdef"><b>Definition:</b> othelloBoard.h:322</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 21 2017 00:39:43 for Othello by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 21 2017 00:57:01 for Othello by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

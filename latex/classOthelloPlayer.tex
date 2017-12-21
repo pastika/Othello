@@ -1,6 +1,10 @@
 \hypertarget{classOthelloPlayer}{\section{Othello\-Player Class Reference}
 \label{classOthelloPlayer}\index{Othello\-Player@{Othello\-Player}}
 }
+
+
+{\ttfamily \#include $<$othello\-Player.\-h$>$}
+
 Inheritance diagram for Othello\-Player\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -10,21 +14,64 @@ Inheritance diagram for Othello\-Player\-:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classOthelloPlayer_a9aa0f48e9cb6c1e7c9037850423f2915}{void {\bfseries operator()} (const \hyperlink{classOthelloBoard}{Othello\-Board}$<$ 8, 8 $>$ \&board, int \&x, int \&y)}\label{classOthelloPlayer_a9aa0f48e9cb6c1e7c9037850423f2915}
-
+void \hyperlink{classOthelloPlayer_a9aa0f48e9cb6c1e7c9037850423f2915}{operator()} (const \hyperlink{classOthelloBoard}{Othello\-Board}$<$ 8, 8 $>$ \&board, int \&x, int \&y)
 \item 
-\hypertarget{classOthelloPlayer_a856fb93347be5480c9db179bb912c694}{void {\bfseries set\-Player} (const unsigned char player)}\label{classOthelloPlayer_a856fb93347be5480c9db179bb912c694}
-
+void \hyperlink{classOthelloPlayer_a856fb93347be5480c9db179bb912c694}{set\-Player} (const unsigned char player)
 \item 
-\hypertarget{classOthelloPlayer_a278b0f93b676c302f914a3dac85d5adf}{virtual void {\bfseries winner} (const unsigned char winner, const \hyperlink{classOthelloBoard}{Othello\-Board}$<$ 8, 8 $>$ \&board)}\label{classOthelloPlayer_a278b0f93b676c302f914a3dac85d5adf}
-
+virtual void \hyperlink{classOthelloPlayer_a278b0f93b676c302f914a3dac85d5adf}{winner} (const unsigned char winner, const \hyperlink{classOthelloBoard}{Othello\-Board}$<$ 8, 8 $>$ \&board)
 \end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classOthelloPlayer_a19f59ab327765eac668851590e7d51f3}{unsigned char {\bfseries player\-\_\-}}\label{classOthelloPlayer_a19f59ab327765eac668851590e7d51f3}
+\hypertarget{classOthelloPlayer_a19f59ab327765eac668851590e7d51f3}{unsigned char \hyperlink{classOthelloPlayer_a19f59ab327765eac668851590e7d51f3}{player\-\_\-}}\label{classOthelloPlayer_a19f59ab327765eac668851590e7d51f3}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Internal variable to track which player this in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Base class to define an othello player. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classOthelloPlayer_a9aa0f48e9cb6c1e7c9037850423f2915}{\index{Othello\-Player@{Othello\-Player}!operator()@{operator()}}
+\index{operator()@{operator()}!OthelloPlayer@{Othello\-Player}}
+\subsubsection[{operator()}]{\setlength{\rightskip}{0pt plus 5cm}void Othello\-Player\-::operator() (
+\begin{DoxyParamCaption}
+\item[{const {\bf Othello\-Board}$<$ 8, 8 $>$ \&}]{board, }
+\item[{int \&}]{x, }
+\item[{int \&}]{y}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloPlayer_a9aa0f48e9cb6c1e7c9037850423f2915}
+External interface to the return\-Play function. \hypertarget{classOthelloPlayer_a856fb93347be5480c9db179bb912c694}{\index{Othello\-Player@{Othello\-Player}!set\-Player@{set\-Player}}
+\index{set\-Player@{set\-Player}!OthelloPlayer@{Othello\-Player}}
+\subsubsection[{set\-Player}]{\setlength{\rightskip}{0pt plus 5cm}void Othello\-Player\-::set\-Player (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{player}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classOthelloPlayer_a856fb93347be5480c9db179bb912c694}
+Set which player position in the game this \hyperlink{classOthelloPlayer}{Othello\-Player} will be (1 or 2 for a traditional game) 
+\begin{DoxyParams}{Parameters}
+{\em The} & assigned player position \\
+\hline
+\end{DoxyParams}
+\hypertarget{classOthelloPlayer_a278b0f93b676c302f914a3dac85d5adf}{\index{Othello\-Player@{Othello\-Player}!winner@{winner}}
+\index{winner@{winner}!OthelloPlayer@{Othello\-Player}}
+\subsubsection[{winner}]{\setlength{\rightskip}{0pt plus 5cm}virtual void Othello\-Player\-::winner (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{winner, }
+\item[{const {\bf Othello\-Board}$<$ 8, 8 $>$ \&}]{board}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{classOthelloPlayer_a278b0f93b676c302f914a3dac85d5adf}
+This function is used to inform the \hyperlink{classOthelloPlayer}{Othello\-Player} which of the players won the game and provide the final board state. It is optional to redefine this method. The player may choose to ignore this information, in which case the default definition is sufficient. 
+\begin{DoxyParams}{Parameters}
+{\em winner} & The player position of the winning player \\
+\hline
+{\em The} & board state at the end of the game \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \hyperlink{classOthelloPlayerTelnet_a2903532fbbc2de163b4bf3c14e214dfe}{Othello\-Player\-Telnet}, and \hyperlink{classOthelloPlayerRemote_a6d7f6c0544aa6a6eb219e69d6c6d2e41}{Othello\-Player\-Remote}.
+
 
 
 The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}

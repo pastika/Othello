@@ -70,7 +70,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,18 +100,16 @@ Inheritance diagram for OthelloPlayerCES:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pub_methods_classOthelloPlayer"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classOthelloPlayer')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classOthelloPlayer.html">OthelloPlayer</a></td></tr>
-<tr class="memitem:a9aa0f48e9cb6c1e7c9037850423f2915 inherit pub_methods_classOthelloPlayer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9aa0f48e9cb6c1e7c9037850423f2915"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (const <a class="el" href="classOthelloBoard.html">OthelloBoard</a>&lt; 8, 8 &gt; &amp;board, int &amp;x, int &amp;y)</td></tr>
+<tr class="memitem:a9aa0f48e9cb6c1e7c9037850423f2915 inherit pub_methods_classOthelloPlayer"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOthelloPlayer.html#a9aa0f48e9cb6c1e7c9037850423f2915">operator()</a> (const <a class="el" href="classOthelloBoard.html">OthelloBoard</a>&lt; 8, 8 &gt; &amp;board, int &amp;x, int &amp;y)</td></tr>
 <tr class="separator:a9aa0f48e9cb6c1e7c9037850423f2915 inherit pub_methods_classOthelloPlayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a856fb93347be5480c9db179bb912c694 inherit pub_methods_classOthelloPlayer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a856fb93347be5480c9db179bb912c694"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>setPlayer</b> (const unsigned char player)</td></tr>
+<tr class="memitem:a856fb93347be5480c9db179bb912c694 inherit pub_methods_classOthelloPlayer"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOthelloPlayer.html#a856fb93347be5480c9db179bb912c694">setPlayer</a> (const unsigned char player)</td></tr>
 <tr class="separator:a856fb93347be5480c9db179bb912c694 inherit pub_methods_classOthelloPlayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a278b0f93b676c302f914a3dac85d5adf inherit pub_methods_classOthelloPlayer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a278b0f93b676c302f914a3dac85d5adf"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>winner</b> (const unsigned char winner, const <a class="el" href="classOthelloBoard.html">OthelloBoard</a>&lt; 8, 8 &gt; &amp;board)</td></tr>
+<tr class="memitem:a278b0f93b676c302f914a3dac85d5adf inherit pub_methods_classOthelloPlayer"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOthelloPlayer.html#a278b0f93b676c302f914a3dac85d5adf">winner</a> (const unsigned char winner, const <a class="el" href="classOthelloBoard.html">OthelloBoard</a>&lt; 8, 8 &gt; &amp;board)</td></tr>
 <tr class="separator:a278b0f93b676c302f914a3dac85d5adf inherit pub_methods_classOthelloPlayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classOthelloPlayer"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classOthelloPlayer')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classOthelloPlayer.html">OthelloPlayer</a></td></tr>
 <tr class="memitem:a19f59ab327765eac668851590e7d51f3 inherit pro_attribs_classOthelloPlayer"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19f59ab327765eac668851590e7d51f3"></a>
-unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>player_</b></td></tr>
+unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOthelloPlayer.html#a19f59ab327765eac668851590e7d51f3">player_</a></td></tr>
+<tr class="memdesc:a19f59ab327765eac668851590e7d51f3 inherit pro_attribs_classOthelloPlayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal variable to track which player this in the game. <br/></td></tr>
 <tr class="separator:a19f59ab327765eac668851590e7d51f3 inherit pro_attribs_classOthelloPlayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/>The documentation for this class was generated from the following files:<ul>
@@ -121,7 +119,7 @@ unsigned char&#160;</td><td class="memItemRight" valign="bottom"><b>player_</b><
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Dec 21 2017 00:39:43 for Othello by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Dec 21 2017 00:57:02 for Othello by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
