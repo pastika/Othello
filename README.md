@@ -1,1 +1,3 @@
 # Othello
+
+Words
