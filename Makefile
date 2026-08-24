@@ -1,12 +1,12 @@
-IDIR       = .
+IDIR       = include
 ODIR       = obj
-SDIR       = .
+SDIR       = src
 
 CXX        = g++
 
-CXXFLAGS  += -I. -std=c++11
+CXXFLAGS  += -I$(IDIR) -std=c++11
 ## Optimization flag
-CXXFLAGS += -g #-O3
+CXXFLAGS += -g -O2
 ## Enable the maximun warning
 #CXXFLAGS += -Wall -Wextra -Weffc++ -g
 
