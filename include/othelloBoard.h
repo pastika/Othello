@@ -139,6 +139,10 @@ public:
         }
         for(int i = 1; i < 256; ++i)
         {
+            if(player[i] == winnerCount)
+            {
+                winner = 0;
+            }
             if(player[i] > winnerCount)
             {
                 winner = i;
