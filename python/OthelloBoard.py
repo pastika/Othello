@@ -11,7 +11,7 @@ class OthelloBoard:
         self.board_[int(N/2) - 1, int(M/2)    ] = 1
         self.board_[int(N/2)    , int(M/2)    ] = 2
         
-        self.moves_ = []
+        self.moves_ = np.array([], dtype=int)
         self.lastPlayer_ = 0
 
     def onBoard(self, x, y) -> bool:
@@ -44,7 +44,7 @@ class OthelloBoard:
         else:
             return 0
 
-    def availableMoves(self, player: int):
+    def availableMoves(self, player: int) -> int:
         moves = []
         nmMax = max(self.N_, self.M_)
         for i in range(self.N_):
@@ -62,26 +62,28 @@ class OthelloBoard:
                             xp = i + dirX
                             yp = j + dirY
                             try:
-                                if self.board_[xp, yp] == 0 or self.board_[xp, yp] == player:
+                                if not self.onBoard(xp, yp) or self.board_[xp, yp] == 0 or self.board_[xp, yp] == player:
                                     continue
-                                for k in range(nmMax):
+                                for k in range(1, nmMax):
                                     if self.board_[xp + k*dirX, yp + k*dirY] == player:
                                         moves.append([i, j])
                                         skip = True
+                                        break
+                                    elif self.board_[xp + k*dirX, yp + k*dirY] == 0:
                                         break
                             except IndexError:
                                 pass
                         if skip: break
                     if skip: break
 
-        return np.array(moves)
+        self.moves_ = np.array(moves, dtype=int)
+        return len(self.moves_)
 
     def play(self, player, x, y) -> bool:
         if not self.onBoard(x, y) or self.board_[x, y] != 0:
             return False
 
-        moves = self.availableMoves(player)
-        if not np.array([x,y]) in moves:
+        if not np.array([x,y]) in self.moves_:
             return False
             
         dirSet = [-1, 0 ,1]
@@ -110,22 +112,56 @@ class OthelloBoard:
         #self.board_[x, y] = player
 
         return True
+
+    def print(self):
+        print(self.constructDisplayString())
+
+    def constructDisplayString(self) -> str:
+        boardLocal = np.zeros([self.N_, self.M_], dtype=int)
+        if len(self.moves_):
+            boardLocal[self.moves_[:,0], self.moves_[:,1]] = 255
+        boardLocal += self.board_
+        
+        displayStr  = "    " + "".join(["%2d"%i for i in range(self.M_)]) + "\n"
+        displayStr += "   " + "-"*(2*self.M_+3) + "\n"
+        for j, line in enumerate(boardLocal):
+            displayStr += "%2d"%j + " |"
+            displayStr += "".join(["%2s"%self.playerToChar(p) for p in line])
+            displayStr += " |\n"
+
+        displayStr += "   " + "-"*(2*self.M_+3)
                 
-                
+        return displayStr
+
+    def playerToChar(self, player) -> str:
+        match player:
+            case 0:   return ' '
+            case 1:   return ' \x1b[31mX\x1b[0m'
+            case 2:   return ' \x1b[34mO\x1b[0m'
+            case 255: return ' \x1b[32m+\x1b[0m'
+            case _:   return '-'
+            
+            
 if __name__ == "__main__":
     # test code 
     board = OthelloBoard()
 
-    print(board.board_)
-    print(board.constructBoard(board.packageBoard()))
-    print(board.board_)
-
-    print(board.winner())
-    print(board.availableMoves(1))
-    print(board.play(1, 2, 3))
-    print(board.board_)
-    print(board.availableMoves(2))
-    print(board.play(2, 2, 2))
-    print(board.board_)
-
+    board.constructBoard(board.packageBoard())
     
+    board.availableMoves(1)
+    board.print()
+    board.play(1, 2, 3)
+    board.availableMoves(2)
+    board.print() 
+    board.play(2, 2, 2)
+    board.availableMoves(1)
+    board.print()
+    board.play(1, 3, 2)
+    board.availableMoves(2)
+    board.print()
+    board.play(2, 4, 2)
+    board.availableMoves(1)
+    board.print()
+   
+    for i in range(10000):
+        board.availableMoves(1)
