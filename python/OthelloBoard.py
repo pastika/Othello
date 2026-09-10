@@ -65,11 +65,12 @@ class OthelloBoard:
                                 if not self.onBoard(xp, yp) or self.board_[xp, yp] == 0 or self.board_[xp, yp] == player:
                                     continue
                                 for k in range(1, nmMax):
-                                    if self.board_[xp + k*dirX, yp + k*dirY] == player:
+                                    if not self.onBoard(xp + k*dirX, yp + k*dirY) or self.board_[xp + k*dirX, yp + k*dirY] == 0:
+                                        break
+                                    elif self.board_[xp + k*dirX, yp + k*dirY] == player:
+                                        print(i, j, xp, yp, dirX, dirY, k)
                                         moves.append([i, j])
                                         skip = True
-                                        break
-                                    elif self.board_[xp + k*dirX, yp + k*dirY] == 0:
                                         break
                             except IndexError:
                                 pass

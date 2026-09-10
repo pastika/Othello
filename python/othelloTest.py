@@ -24,7 +24,7 @@ def main():
     sock.sendall(b"1")
 
     #while True:
-    for i in range(32):
+    for i in range(33):
         stop = False
         data = sock.recv(1024).decode("utf-8")
 

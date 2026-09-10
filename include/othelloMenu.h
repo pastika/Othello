@@ -1,6 +1,7 @@
 #include <string>
 #include <vector>
 #include <utility>
+#include <ctime>
 
 #include <sys/socket.h>
 
@@ -149,7 +150,7 @@ private:
             switch(responce)
             {
             case 1:
-                (p1_?p2_:p1_) = new OthelloPlayerRandom();
+                (p1_?p2_:p1_) = new OthelloPlayerRandom(clock());
                 break;
             case 2:
                 (p1_?p2_:p1_) = new OthelloPlayerCES();
