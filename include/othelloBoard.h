@@ -56,6 +56,22 @@ public:
     }
 
     /**
+     *Constructs an othello board from another board.
+     */
+    OthelloBoard(const OthelloBoard<N, M>& state)
+    {
+        for(int i = 0; i < N; ++i)
+        {
+            for(int j = 0; j < M; ++j)
+            {
+                board_[i][j] = state.board_[i][j];
+            }
+        }
+
+        lastPlayer_ = state.lastPlayer_;
+    }
+
+    /**
      *Translates the internal board array into a single non-human readable string which is intended for transmission via network to another client.
      *@return Packaged string containing all the information in the internal board array
      */
@@ -120,6 +136,25 @@ public:
         return true;
     }
 
+    
+    /**
+     *Determine how many places the selected plater has
+     *@return returns the number of places held by the selected player
+     */
+    unsigned int count(unsigned char player) const
+    {
+        unsigned int count = 0;
+        for(int i = 0; i < N; ++i)
+        {
+            for(int j = 0; j < M; ++j)
+            {
+                if(board_[i][j] == player) ++count;
+            }
+        }
+        return count;
+    }
+
+    
     /**
      *Determine which player currently is willing the game.   I.e. who has the most pieces of the board.
      *@return returns the player who currently has the most pieces of the baord 

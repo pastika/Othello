@@ -4,7 +4,7 @@ SDIR       = src
 
 CXX        = g++
 
-CXXFLAGS  += -I$(IDIR) -std=c++11
+CXXFLAGS  += -I$(IDIR) -std=c++20
 ## Optimization flag
 CXXFLAGS += -g -O2
 ## Enable the maximun warning
@@ -27,10 +27,10 @@ objdir:
 $(ODIR)/%.o : $(SDIR)/%.cpp
 	$(CXX) $(CXXFLAGS) $(CXXDEPFLAGS) -o $@ -c $<
 
-othello: $(ODIR)/othelloArbiter.o $(ODIR)/othelloPlayerLOM.o $(ODIR)/othelloPlayerRandom.o $(ODIR)/othello.o
+othello: $(ODIR)/othelloArbiter.o $(ODIR)/othelloPlayerLOM.o $(ODIR)/othelloPlayerRandom.o  $(ODIR)/othelloPlayerCES.o $(ODIR)/othelloPlayerPCEM.o $(ODIR)/othello.o
 	$(LD) $^ $(LIBS) -o $@
 
-server: $(ODIR)/othelloPlayerLOM.o $(ODIR)/othelloPlayerRandom.o $(ODIR)/othelloPlayerCES.o $(ODIR)/othelloArbiter.o $(ODIR)/othelloServer.o
+server: $(ODIR)/othelloPlayerLOM.o $(ODIR)/othelloPlayerRandom.o $(ODIR)/othelloPlayerCES.o $(ODIR)/othelloPlayerPCEM.o $(ODIR)/othelloArbiter.o $(ODIR)/othelloServer.o
 	$(LD) $^ $(LIBS) -o $@
 
 client: $(ODIR)/othelloArbiterClient.o $(ODIR)/othelloPlayerRandom.o $(ODIR)/othelloClient.o

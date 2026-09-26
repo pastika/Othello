@@ -2,17 +2,20 @@
 #include "othelloPlayerRandom.h"
 #include "othelloPlayerHuman.h"
 #include "othelloPlayerCES.h"
+#include "othelloPlayerPCEM.h"
 #include "othelloPlayerLOM.h"
 
 #include "getopt.h"
+
+#include <ctime>
 
 int main()
 {
     //Add option parsing here
 
-    int wins[2] = {0, 0};
+    int wins[3] = {0, 0, 0};
 
-    OthelloPlayer *p1 = new OthelloPlayerLOM();
+    OthelloPlayer *p1 = new OthelloPlayerPCEM();
     OthelloPlayer *p2 = new OthelloPlayerRandom();
     //OthelloPlayer *p2 = new OthelloPlayerHuman();
 
@@ -21,15 +24,18 @@ int main()
     {
         OthelloArbiter oarb(0);
 
-        oarb.setVerbosity(0);
+        oarb.setVerbosity(1);
 
         oarb.addPlayer(p1);
         oarb.addPlayer(p2);
 
         unsigned char winner = oarb.playOthello();
+
+        if(winner == 2)
+            break;
         
-        wins[winner - 1]++;
+        wins[winner]++;
     }
 
-    printf("\nWins:\nPlayer X: %d\nPlayer O: %d\n", wins[0], wins[1]); 
+    printf("\nWins:\nPlayer X: %d\nPlayer O: %d\nTies    : %d\n", wins[1], wins[2], wins[0]); 
 }

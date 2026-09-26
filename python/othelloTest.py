@@ -11,20 +11,23 @@ def main():
     data = sock.recv(1024).decode("utf-8")
     print(data)
 
+    # game type
     sock.sendall(b"2")
     
     data = sock.recv(1024).decode("utf-8")
     print(data)
 
+    # num players
     sock.sendall(b"2")
 
     data = sock.recv(1024).decode("utf-8")
     print(data)
 
+    # player type
     sock.sendall(b"1")
 
     #while True:
-    for i in range(33):
+    for i in range(36):
         stop = False
         data = sock.recv(1024).decode("utf-8")
 

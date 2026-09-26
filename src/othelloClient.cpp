@@ -122,7 +122,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    if ((numbytes = send(sockfd, "3", 1, 0)) == -1) 
+    if ((numbytes = send(sockfd, "1", 1, 0)) == -1) 
     {
         perror("send");
         exit(1);
